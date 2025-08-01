@@ -4,6 +4,8 @@ import com.medbot.ui.ChatBotUI;
 
 public class Main {
     public static void main(String[] args) {
-        new ChatBotUI();
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            new ChatBotUI().createAndShowGUI();
+        });
     }
 }
