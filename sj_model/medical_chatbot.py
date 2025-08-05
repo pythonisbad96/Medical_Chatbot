@@ -39,11 +39,14 @@ def chunk_text(texts, chunk_size=300):
 
 # 5. 각 파일별 chunk + 벡터DB 저장 (최초 1회, 그 후엔 필요X)
 def prepare_faiss():
+    # 벡터DB 폴더 자동 생성
+    os.makedirs("vector_db", exist_ok=True)
+
     # 1200_v1
     texts_1200 = df_1200["label"].astype(str) + "\n" + df_1200["text"].astype(str)
     chunks_1200 = chunk_text(texts_1200.tolist(), chunk_size=300)
     db_1200 = FAISS.from_texts(chunks_1200, embedding=embedding_model)
-    db_1200.save_local("faiss_db_1200_v1")
+    db_1200.save_local("vector_db/faiss_db_1200_v1")
 
     # amc
     amc_texts = (
@@ -61,19 +64,19 @@ def prepare_faiss():
     )
     chunks_amc = chunk_text(amc_texts.tolist(), chunk_size=400)
     db_amc = FAISS.from_texts(chunks_amc, embedding=embedding_model)
-    db_amc.save_local("faiss_db_amc")
+    db_amc.save_local("vector_db/faiss_db_amc")
 
     # daily
     daily_texts = df_daily["증상"].astype(str) + "\n" + df_daily["일상말"].astype(str)
     chunks_daily = chunk_text(daily_texts.tolist(), chunk_size=250)
     db_daily = FAISS.from_texts(chunks_daily, embedding=embedding_model)
-    db_daily.save_local("faiss_db_daily_dataset")
+    db_daily.save_local("vector_db/faiss_db_daily_dataset")
 
     # final_v7
     final_texts = df_final["label"].astype(str) + "\n" + df_final["text"].astype(str)
     chunks_final = chunk_text(final_texts.tolist(), chunk_size=300)
     db_final = FAISS.from_texts(chunks_final, embedding=embedding_model)
-    db_final.save_local("faiss_db_final_v7")
+    db_final.save_local("vector_db/faiss_db_final_v7")
 
     # kdca
     kdca_texts = (
@@ -91,7 +94,7 @@ def prepare_faiss():
     )
     chunks_kdca = chunk_text(kdca_texts.tolist(), chunk_size=400)
     db_kdca = FAISS.from_texts(chunks_kdca, embedding=embedding_model)
-    db_kdca.save_local("faiss_db_kdca")
+    db_kdca.save_local("vector_db/faiss_db_kdca")
 
     # snu
     snu_texts = (
@@ -109,7 +112,7 @@ def prepare_faiss():
     )
     chunks_snu = chunk_text(snu_texts.tolist(), chunk_size=400)
     db_snu = FAISS.from_texts(chunks_snu, embedding=embedding_model)
-    db_snu.save_local("faiss_db_snu")
+    db_snu.save_local("vector_db/faiss_db_snu")
 
 
 # # 최초 1회만 실행
@@ -117,12 +120,12 @@ prepare_faiss()
 
 # 6. 벡터DB 로드 (매번)
 db_paths = [
-    "faiss_db_1200_v1",
-    "faiss_db_amc",
-    "faiss_db_daily_dataset",
-    "faiss_db_final_v7",
-    "faiss_db_kdca",
-    "faiss_db_snu",
+    "vector_db/faiss_db_1200_v1",
+    "vector_db/faiss_db_amc",
+    "vector_db/faiss_db_daily_dataset",
+    "vector_db/faiss_db_final_v7",
+    "vector_db/faiss_db_kdca",
+    "vector_db/faiss_db_snu",
 ]
 db_list = [
     FAISS.load_local(db_path, embedding_model, allow_dangerous_deserialization=True)
