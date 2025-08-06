@@ -1,0 +1,45 @@
+{
+  "병명": "손목 통증",
+  "증상": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": "손목 통증은 원인에 따라 다르게 나타날 수 있습니다. 예를 들어, 골관절염으로 인한 통증은 종종 둔한 치통과 비슷한 느낌으로 설명됩니다. 손목터널증후군은 보통 손바닥에 바늘로 찌르는 듯한 저림을 유발합니다. 이러한 저림 증상은 특히 밤에 엄지, 검지, 중지에서 주로 발생합니다. 손목 통증의 정확한 위치는 증상의 원인을 파악하는 데 중요한 단서를 제공합니다.",
+    "1200": null
+  },
+  "정의": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}

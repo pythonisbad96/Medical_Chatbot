@@ -1,0 +1,45 @@
+{
+  "병명": "사스",
+  "증상": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": "SARS는 보통 독감과 유사한 증상으로 시작됩니다. 여기에는 발열, 오한, 근육통, 두통, 때때로 설사가 포함됩니다. 약 일주일 후에는 다음과 같은 증상이 나타날 수 있습니다: 38도 이상의 고열, 마른기침, 호흡 곤란.",
+    "1200": null
+  },
+  "정의": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}

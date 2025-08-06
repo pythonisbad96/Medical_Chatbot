@@ -1,0 +1,45 @@
+{
+  "병명": "카바페넴 내성 장내세균",
+  "증상": {
+    "Amc": null,
+    "Snu": "장내세균과(Family Enterobacteriaceae)에 속하는 세균이 일으키는 감염증의 종류에 따라 다양한 증상을 나타냅니다. 요로감염을 일으키면 배뇨통 , 빈뇨(소변을 자주 보는 증상), 옆구리 통증, 발열로 나타납니다. 복강 내 감염을 일으키면 복통, 발열, 복부 압통(누르면 아픈 증상)으로 나타납니다. 담낭염 이나 담관염을 일으키면 우상복부 통증, 발열, 황달로 나타납니다. 균혈증을 일으키면 발열로 나타납니다. 폐렴을 일으키면 발열, 고름 같은 가래, 가슴 통증으로 나타납니다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "정의": {
+    "Amc": null,
+    "Snu": "카바페넴(Carbapenem)은 세팔로스포린(cephalosporin)을 포함한 광범위 베타락탐 항생제(beta-lactam antibiotics)에 내성을 지닌 세균들을 치료할 수 있는 항생제입니다. 카바페넴 계열 항생제에는 이미페넴(imipenem), 메로페넴(meropenem), 얼타페넴(ertapenem) 등이 속합니다. 카바페넴은 현재 사용 중인 항생제 중 그람음성세균에 대해 가장 광범위 항균력을 가지고 있습니다. 카바페넴 내성 장내세균은 카바페넴 계열 항생제에 내성을 보이는 장내세균과(Family Enterobacteriaceae)에 속하는 세균을 뜻하는 용어입니다. 장내세균과에는 대장균(Escherichia coli), 클렙지엘라 (Klebsiella), 엔테로박터(Enterobacter), 사이트로박터(Citrobacter), 세라시아(Serratia) 등의 다양한 세균이 포함됩니다. 카바페넴 내성 장내세균은 아미노글리코사이드(aminoglycoside), 퀴놀론(quinolone), 테트라사이클린(tetracycline) 등의 다양한 항균제에도 내성을 보이기 때문에 다제내성균(multidrug-resistant organsim)으로 분류됩니다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": "장내세균이 카바페넴에 내성을 보이는 이유로는 카바페넴을 분해할 수 있는 효소 생성, 광범위 베타락탐항균제에 내성을 보이는 효소 생성 + 세균 외막에 있는 구멍단백(porin) 소실 혹은 유출펌프(efflux pump) 증가가 있습니다. 카바페넴 분해효소는 구조에 따라 분류하는데 KPC, NDM, IMP, VIM 등이 알려져 있습니다. 카바페넴 내성 장내세균에 대해 사용할 수 있는 항균제는 콜리스틴(colistin), 티제사이클린(tigecycline) 정도로 매우 제한적이며 콜리스틴은 신장독성의 문제점이, 티제사이클린은 혈액 농도가 낮아 중증 질병에 사용하기 어려운 문제점이 있습니다. 즉 카바페넴 내성 장내세균 감염증이 발생하면 적절한 치료제가 적어 치료에 어려움이 있습니다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": null,
+    "Snu": "카바페넴 내성 장내세균은 베타락탐(beta-lactam) 항생제는 물론이고 아미노글리코사이드(aminoglycoside), 퀴놀론(quinolone), 테트라사이클린(tetracycline) 등의 다양한 항생제에도 내성을 보이기 때문에 다제내성균(multidrug-resistant organsim)으로 분류됩니다. 카바페넴 내성 장내세균에 대해 사용할 수 있는 항생제는 콜리스틴(colistin), 티제사이클린(tigecycline) 정도로 매우 제한적이며 콜리스틴은 신장독성의 문제점이, 티제사이클린은 혈액 농도가 낮아 중증 질병에 사용하기 어려운 문제점이 있습니다. 즉 카바페넴 내성 장내세균 감염증이 발생하면 적절한 치료제가 적어 치료에 어려움이 있습니다. 세프타지딤-아비박탐(ceftazidime-avibactam), 메로페넴-바보박탐(meropenem-vaborbactam)과 같이 최근 개발된 항균제는 일부 카바페넴 내성 장내세균 감염증에 효과적이나 2018년 현재 우리나라에서 사용되고 있지 않습니다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": null,
+    "Snu": "감염내과",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "병명": "편충증",
+  "증상": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": "잠복기는 1개월 내지 3개월이며, 소수의 편충이 감염되었을 경우에는 가벼운 위장 증상 정도이지만, 많은 수 감염시에는 복통, 만성 설사, 점혈변, 빈혈, 체중감소, 드물게 직장이 항문을 통해 빠져나오는 직장탈출증도 생깁니다.",
+    "Final": null,
+    "1200": null
+  },
+  "정의": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": "편충증은 채소, 김치, 물, 토양 등에 묻어 있는 자충포장란(감염형 충란)을 경구 섭취하여 감염됩니다.",
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": "대변검사에서 특징적인 충란을 검출하면 확진할 수 있습니다.",
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": "알벤다졸(Albendazole) 400 mg을 1회 투여합니다.",
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}

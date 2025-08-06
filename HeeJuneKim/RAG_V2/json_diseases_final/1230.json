@@ -1,0 +1,45 @@
+{
+  "병명": "시트룰닌혈증",
+  "증상": {
+    "Amc": "시트룰린혈증은 혈액 속의 암모니아와 특정 아미노산이 증가합니다. 따라서 소변으로 배출되는 대사물질을 측정하여 이 병을 진단할 수 있습니다. 모든 형에서 혈중 암모니아가 상승하며, 시트룰린혈증에서는 혈중, 요중의 citrulline이 증가합니다. argininosuccinic aciduria에서는 요중의 argininosuccinic acid가 증가하고, 모발의 양이 적어지고 모발이 쉽게 부스러집니다. 고아르기닌혈증에서는 혈중의 arginine이 상승합니다. 각각의 질환에 대한 유전자(ASS, ASL, ARG 유전자) 검사를 시행하여 유전적 진단을 할 수 있습니다.",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "정의": {
+    "Amc": "시트룰린혈증은 argininosuccinic acid synthetase의 결손증이고, argininosuccinic aciduria는 argininosuccinase의 결손증입니다. 이들 효소가 결핍되면 단백대사 노폐물인 암모니아가 정상적으로 처리되지 못하게 하고, 인체에 필요한 아르기닌의 합성을 저해합니다. 혈액 내 시트룰린이 증가하는 특징이 있습니다. 고아르기닌혈증은 arginase의 결손증으로 인해 암모니아와 아르기닌이 증가합니다. 이들 모두 상염색체 열성으로 유전됩니다.",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": "시트룰린혈증은 혈액 속의 암모니아와 특정 아미노산이 증가합니다. 따라서 소변으로 배출되는 대사물질을 측정하여 이 병을 진단할 수 있습니다. 모든 형에서 혈중 암모니아가 상승하며, 시트룰린혈증에서는 혈중, 요중의 citrulline이 증가합니다. argininosuccinic aciduria에서는 요중의 argininosuccinic acid가 증가하고, 모발의 양이 적어지고 모발이 쉽게 부스러집니다. 고아르기닌혈증에서는 혈중의 arginine이 상승합니다. 각각의 질환에 대한 유전자(ASS, ASL, ARG 유전자) 검사를 시행하여 유전적 진단을 할 수 있습니다.",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": "급성기에는 혈액 투석 또는 복막 투석을 시행하고, soidum benzoate(안식향산), phenylacetate와 arginine 주사로 암모니아치를 낮추면서 고탄수화물, 고지방 식이를 통해 충분한 열량을 공급하여 치료합니다. 급성기에서 회복되면, 저단백 고탄수화물식(단백질 섭취량 1.0~1.5g/kg/일) 및 안식향산과 phenylacetic acid 또는 sodium phenylbutyrate를 경구 투여하여 고암모니아혈증을 예방합니다. 안식향산 투여에 의한 hippuric acid(마뇨산)의 요중 배설과 phenylacetic acid 투여에 의한 phenylacetyl glutamine의 배설이 증가하면서 효과적인 치료가 이루어집니다.  시트룰린혈증과 argininosuccinic aciduria에는 아르기닌을 투여합니다. 아르기닌혈증에서는 아르기닌을 투여하지 않습니다. 반복적으로 고암모니아혈증이 반복되는 경우, 신경학적 이상이 없는 환자를 대상으로 간 이식을 시행하기도 있습니다. 현재, 유전자 치료, 줄기세포치료 등에 관한 연구가 진행 중입니다.",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": "의학유전학센터, 소아내분비대사과, 의학유전학과",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}

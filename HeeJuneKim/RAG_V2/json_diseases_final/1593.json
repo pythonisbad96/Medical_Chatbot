@@ -1,0 +1,51 @@
+{
+  "병명": "위장염",
+  "증상": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": [
+      "구토, 눈이 움푹 들어감, 탈수, 설사",
+      "구토, 눈이 움푹 들어감, 설사",
+      "구토, 탈수, 설사",
+      "구토, 눈이 움푹 들어감, 탈수증상",
+      "눈이 움푹 들어감, 탈수, 설사"
+    ],
+    "1200": null
+  },
+  "정의": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}
