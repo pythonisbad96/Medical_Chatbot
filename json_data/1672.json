@@ -1,0 +1,52 @@
+{
+  "병명": "이형 치질",
+  "증상": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": [
+      "변비, 배변 시 통증, 항문 부위 통증, 혈변, 항문 부위 자극",
+      "변비, 배변 시 통증, 혈변, 항문 자극",
+      "변비, 항문 부위의 통증, 혈변, 항문 자극",
+      "배변 시 통증, 항문 부위의 통증, 혈변, 항문 자극감",
+      "변비, 배변 시 통증, 항문 부위의 통증, 항문 부위의 자극감",
+      "변비, 배변 시 통증, 항문 부위 통증, 혈변"
+    ],
+    "1200": null
+  },
+  "정의": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}

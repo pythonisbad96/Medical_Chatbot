@@ -1,0 +1,45 @@
+{
+  "병명": "군집성흑자증",
+  "증상": {
+    "Amc": null,
+    "Snu": "수 mm 크기의 갈색 반점 다수가 특정 부위에 군집하여 나타나는데, 우리 몸 어디에나 발생할 수 있으며, 일부 피부분절을 따라 발생되기도 한다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "정의": {
+    "Amc": null,
+    "Snu": "군집성흑자증은 다수의 흑자들이 특정 피부부위에 군집하여 나타나는 양성 질환이다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": null,
+    "Snu": "Q-switched Nd:YAG 레이저 등이 치료에 사용되나 아직 효과적인 치료법이 정립되지는 않았다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": null,
+    "Snu": "피부과",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}

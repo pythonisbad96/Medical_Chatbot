@@ -1,0 +1,45 @@
+{
+  "병명": "빙섭취증",
+  "증상": {
+    "Amc": null,
+    "Snu": "지속적으로 얼음 혹은 얼음 음료를 섭취하게 된다. 원인 질병에 따라 다른 증상들이 동반될 수 있다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "정의": {
+    "Amc": null,
+    "Snu": "빙섭취증은 얼음을 강박적으로 섭취하는 것을 뜻한다. 이식증(異食症)의 일종이다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": "철결핍성 빈혈 과 연관이 있다고 알려져 있다. 많은 스트레스에 노출 된 경우, 강박증 혹은 다른 발달 장애가 있는 경우에도 빙섭취증이 나타날 수 있다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": null,
+    "Snu": "빙섭취증의 원인이 되는 질병에 대한 치료가 필요하다. 빈혈이라면 빈혈의 유형에 맞는 치료가 필요하다. 강박증이 원인인 경우 인지행동치료(CBT, Cognitive Bahavioral Therapy), 정신약물치료 등의 치료가 필요하다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": null,
+    "Snu": "정신건강의학과",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}

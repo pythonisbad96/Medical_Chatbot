@@ -1,0 +1,45 @@
+{
+  "병명": "카르니틴 팔미토일 전환효소 결핍증 2형",
+  "증상": {
+    "Amc": "① 임상적 진단- Tandem mass spectrometry of serum/plasma acylcarnitines- CPT II enzyme activity 감소- Serum CK 농도 증가 ② 분자유전학적 검사- CPT 2형과 관련된 유전자는 CPT2로 염색체 1p32에 위치합니다.",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "정의": {
+    "Amc": "Carnitine Palmitoyltransferase Deficiency(CPT Deficiency)는 긴사슬지방산 산화( long-chain fatty-acid oxidation)에 장애가 있는 질환입니다. CPT는 지방 대사에 필요한 중요한 효소 중 하나로 카르니틴과 함께 긴사슬지방산(long-chain fatty acid)이 미토콘드리아 안으로 들어가서 세포 내 에너지를 생성하도록 돕는 작용을 합니다. CPT의 결핍이 생기면 근육 내 에너지가 부족하게 되어 여러 가지 증상이 나타나고, 높은 농도로 체내를 순환하던 긴사슬지방산이 조직에 쌓여 간, 심장, 근육에 손상이 발생합니다.  CPT Deficiency는 1형과 2형으로 구분됩니다. CPT 1형은 성인과 청소년에서 주로 발생합니다. CPT 2형은 성인에게서 나타나지만 드물게 영아에서도 발생합니다. 영아에게 발생할 시 증상이 매우 심각합니다. CPT 2형은 증상과 발병 연령에 따라 3가지 형태로 구분됩니다. 신생아기에 발병하는 치명적인 형태와 영아기에 발병하는 중증의 hepatocardiomuscular의 형태에서는 간부전, 저케톤혈증이 동반된 저혈당(hypoketotic hypoglycemia), 심근병증, 발작, 조기 사망의 특징이 나타납니다. 신생아기~성인기에 발생하는 경미한 근육병의 형태에서는 운동 시 유발되는 근육의 통증, 허약, 미오글로불린뇨증(Myoglobinuria)의 특징이 나타납니다. CPT 2형은 상염색체 열성으로 유전됩니다. 환자의 70%가 1~12세에 발병하며, 26%가 13~22세에 발병합니다. 보고에 의하면, 61세에 발병하는 경우도 있다고 합니다.",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": "① 임상적 진단- Tandem mass spectrometry of serum/plasma acylcarnitines- CPT II enzyme activity 감소- Serum CK 농도 증가  ② 분자유전학적 검사- CPT 2형과 관련된 유전자는 CPT2로 염색체 1p32에 위치합니다.",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": "아직까지 이 질환에 대한 근본적인 치료 방법은 없습니다. 증상의 완화를 목표로 하는 대증 요법과 각종 합병증을 조절하고 완화하기 위한 지지 요법이 필요합니다. 카르니틴 보충제가 도움이 될 수 있습니다. CPT 2형 환자에게 valproic acid, 전신마취, ibuprofen, diazepam을 금지해야 합니다.  ① 일차적 증상 예방- 병발 감염(intercurrent infections) 동안에는 포도당을 주입합니다.- 적절한 영양분을 섭취하며 고탄수화물(70%), 저지방(20% 이하) 식이를 합니다.- 자주 식사를 하여 금식 시간이 길어지지 않도록 합니다.- 심한 운동과 스트레스 상황을 피합니다.  ② 이차적 합병증 예방횡문근 융해(rhabdomyolysis)가 발생하여 미오글로불린이 신장의 세뇨관을 거치면서 사구체를 그대로 통과하여 소변으로 배출됩니다. 이 과정에서 사구체가 손상되고 신장 기능이 저하되고 악화되면서 신부전증과 같은 합병증이 생길 수 있습니다. 따라서 합병증에 대한 예방과 치료가 필요합니다.",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": "의학유전학센터, 소아내분비대사과, 의학유전학과",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}

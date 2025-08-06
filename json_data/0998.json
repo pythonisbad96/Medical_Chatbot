@@ -1,0 +1,45 @@
+{
+  "병명": "사이트린 결핍",
+  "증상": {
+    "Amc": "사이트린 결핍(Citrin deficiency)은 임상적 소견, 생화학적 검사, 분자생물학적 검사를 통해 진단합니다. ① 임상적 진단- 혈액이나 혈장에서 암모니아 증가- 혈장이나 혈청에서 citrulline, arginine 증가- 혈장이나 혈청에서 Threonine 대 Serine 비율의 증가- 간에서 argininosuccinic acid synthetae의 활성에 이상 없이 효소 활성은 감소- 신장, 섬유모세포 등 다른 조직에서 argininosuccinic acid synthetae의 효소 활성의 정상- Pancreatic Secretory Trypsin Inhibitor (PSTI)의 증가- CTLN2에서의 PSTI 농도 증가, ASS 효소의 결핍- NICCD에서의 galactose, phenylalanine, concentrations of methionine and tyrosine, total bilirubin, direct bilirubin, total bile acids, plasma의 증가 ② 분자유전학적 검사SLC25A13은 사이트린 결핍과 관련된 유일한 유전자입니다. 이 유전자는 칼슘과 결합하는 사립체의 용해성 carrier 단백으로, 사이트린(citrin)으로 명명되었습니다. 사이트린은 주로 간, 신장, 피부 조직에서 발현됩니다. 유전자는 상염색체 7q21.3에 위치하고, 18개 exon으로 구성됩니다. 이 단백의 기능은 간에서 칼슘 이론에 자극받는 aspartate-glutamate carrier로 알려져 있습니다.",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "정의": {
+    "Amc": "사이트린 결핍(Citrin deficiency)은 성인형 시투룰린혈증(citrullinemia type II, CTLN2)을 유발하거나, 담즙정체성 간염을 동반하는 신생아기의 NICCD(neonatal intrahepatic cholestasis caused by citrin deficiency)의 원인이 됩니다.  과거에는 우리나라와 일본을 비롯한 아시아 국가에 주로 나타나는 질환으로 인식되었지만, 최근에는 다른 인종에게서도 확인되고 있습니다.",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": "사이트린 결핍(Citrin deficiency)은 임상적 소견, 생화학적 검사, 분자생물학적 검사를 통해 진단합니다.  ① 임상적 진단- 혈액이나 혈장에서 암모니아 증가- 혈장이나 혈청에서 citrulline, arginine 증가- 혈장이나 혈청에서 Threonine 대 Serine 비율의 증가- 간에서 argininosuccinic acid synthetae의 활성에 이상 없이 효소 활성은 감소- 신장, 섬유모세포 등 다른 조직에서 argininosuccinic acid synthetae의 효소 활성의 정상- Pancreatic Secretory Trypsin Inhibitor (PSTI)의 증가- CTLN2에서의 PSTI 농도 증가, ASS 효소의 결핍- NICCD에서의 galactose, phenylalanine, concentrations of methionine and tyrosine, total bilirubin, direct bilirubin, total bile acids, plasma의 증가  ② 분자유전학적 검사SLC25A13은 사이트린 결핍과 관련된 유일한 유전자입니다. 이 유전자는 칼슘과 결합하는 사립체의 용해성 carrier 단백으로, 사이트린(citrin)으로 명명되었습니다. 사이트린은 주로 간, 신장, 피부 조직에서 발현됩니다. 유전자는 상염색체 7q21.3에 위치하고, 18개 exon으로 구성됩니다. 이 단백의 기능은 간에서 칼슘 이론에 자극받는 aspartate-glutamate carrier로 알려져 있습니다.",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": "사이트린 결핍(Citrin deficiency)의 치료 방법은 잘 알려지지 않았습니다. 사이트린 결핍의 증상이 심하면 환자의 생명이 위험할 수 있습니다. 급성기 고암모니아혈증을 제외하면 고단백질 섭취를 권장하며, 아르지닌(arginine)을 보충해야 합니다.  ① CTLN2CTLN2을 치료하는 유효한 방법은 간 이식이라고 여겨지고 있습니다. 아르지닌(Arginine)을 경구 투여하여 암모니아를 감소시킵니다. 고지방중성혈증은 고단백질 섭취와 탄수화물 제한으로 호전시킵니다. Acetaminophen, rabeprozole, anti-inflammatory, analgesic drugs, 알코올 등은 CTLN2을 유발할 수 있으므로 이를 투약하기 전에는 전문가와 상의해야 합니다.  ② NICCDNICCD을 진단받았지만 따로 치료하지 않아도 증상이 호전되는 경우가 있습니다. 하지만 NICCD를 치료하기 위하여 지용성 비타민의 섭취, lactose-free formula or formulas containing middle-chain triglycerides (MCT)의 특수 분유 처방이 필요한 경우도 있습니다. NICCD 환자는 고단백, 고지질, 저탄수화물 식이를 합니다.",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": "의학유전학센터, 의학유전학과",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}

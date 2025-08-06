@@ -1,0 +1,45 @@
+{
+  "병명": "뮤코다당질축적증",
+  "증상": {
+    "Amc": "뮤코다당질 축적증(MPS) 환자는 대부분 출생 당시에는 정상이지만 이후 골격계 이상, 얼굴 외모의 변화(거칠고 조악한 얼굴), 관절 구축, 간의 비대 등이 동반됩니다. MPS 유형에 따라 인지 장애, 퇴행, 각막의 혼탁, 청력 장애 등이 나타납니다. 회음부 탈장, 호흡기 감염이 자주 확인됩니다. 이외에 뇌수종, 경추 신경의 압박, 심장 판막의 협착 혹은 역류, 호흡 장애, 수면 무호흡증이 동반될 수도 있습니다. (더 자세한 사항은 각 질환에 대한 설명 자료 참조)",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "정의": {
+    "Amc": "뮤코다당질 축적증은 글리코사미노글리칸(glycosaminoglycans)의 분해에 필요한 라이소좀 효소(lysosomal enzymes)가 부족하여 발생하는 유전 질환을 의미합니다. 글리코사미노글리칸이 세포의 라이소좀 내에 축적되고 이것이 소변으로 과도하게 배설되면서 점차 육체적, 정신적 퇴행이 진행됩니다. 증상이 심한 경우 조기에 사망에 이르는 등 다양한 임상 양상을 보입니다. 임상형은 어떤 효소가 결핍되느냐에 따라 1형~7형으로 분류합니다. 뮤코다당질 축적증은 결핍되는 효소의 종류나 정도에 따라 다양한 증상을 보입니다.  글리코사미노글리칸에 포함되는 데르마탄황산(dermatan sulfate), 에파란황산(eparan sulfate), 케라탄황산(keratan sulfate)의 대사에 장애가 생겨 체내의 각 장기에 축적되어 발생합니다. 대부분의 환자는 뮤코다당의 축적에 의한 심한 지능 장애, 신체 이상의 소견을 보이며, 심한 경우 일찍 사망합니다. 이 질환은 일반적으로 임상적 공통점을 보입니다. 만성 진행성, 여러 장기에서의 축적, 장기 비대 현상, 뼈와 얼굴 모양의 이상 등이 대표적인 예입니다. 청각 장애, 시각 장애, 호흡기 장애, 심장 기능 장애, 관절 이상 등이 자주 관찰됩니다. 이 질환은 제2형을 제외하고는 모두 상염색체 열성으로 유전됩니다. 제2형은 성염색체 열성 유전입니다.  ① Mucopolysaccharidosis Ⅰ형- Hurler syndrome- Hurler-Scheie syndrome- Scheie syndrome② Mucopolysaccharidosis Ⅱ형(Hunter Syndrome)③ Mucopolysaccharidosis Ⅲ형(Sanfilippo syndrome)④ Mucopolysaccharidosis Ⅳ형(Morquio syndrome)⑤ Mucopolysaccharidosis Ⅵ형(Maroteaux-Lamy Syndrome)⑥ Mucopolysaccharidosis Ⅶ형(Sly Syndrome)",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": "① Mucopolysaccharidosis Ⅰ형 : α-L-iduronidase 결핍② Mucopolysaccharidosis Ⅱ형(Hunter Syndrome) : Iduronate-2-sulphatase 결핍③ Mucopolysaccharidosis Ⅲ형(Sanfilippo syndrome) : heparan sulfate 대사에 관련된 4가지 효소의 결핍(A-D형)④ Mucopolysaccharidosis Ⅳ형(Morquio syndrome) : keratan sulfate 대사에 관련된 2가지 효소의 결핍(A, B형)⑤ Mucopolysaccharidosis Ⅵ형(Maroteaux-Lamy Syndrome) : arylsulfatase B 결핍⑥ Mucopolysaccharidosis Ⅶ형(Sly Syndrome) : β-glucuronidase 결핍",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": "뮤코다당질 축적증은 임상적 소견을 바탕으로 각 MPS 유형에 대한 효소 검사나 유전자 검사로 진단할 수 있습니다.",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": "뮤코다당질 축적증을 치료하기 위해서는 우선 이상이 있는 장기를 치료합니다. 현재 I, II, VI형에 대해 효소 대치 요법을 시행할 수 있으며, IV형에 대해서는 임상 시험이 진행 중입니다. 일부 유형의 환자에게 골수를 이식하기도 했지만, 증상이 발현되기 전 어릴 때 시행해야 하며, 환자에 따라 치료 효과에 차이가 있습니다.",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": "의학유전학센터, 의학유전학과",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "병명": "마비 뇌출혈",
+  "증상": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": [
+      "구토, 두통, 신체 한쪽의 무력감, 의식 변화",
+      "두통, 한쪽 몸의 약화, 의식 변화",
+      "구토, 신체 한쪽의 약화, 의식 혼미",
+      "구토, 두통, 의식 변화",
+      "구토, 두통, 신체 한쪽의 무력감"
+    ],
+    "1200": null
+  },
+  "정의": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}

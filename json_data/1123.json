@@ -1,0 +1,45 @@
+{
+  "병명": "소아 제2형 당뇨병",
+  "증상": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": "소아에서 발생하는 제2형 당뇨병은 증상이 서서히 나타나기 때문에 눈에 띄는 증상이 없을 수 있습니다. 때때로 정기 건강 검진 중에 이 질환이 진단되기도 합니다. 일부 어린이는 혈당이 너무 높아 다음과 같은 증상을 경험할 수 있습니다: 갈증 증가, 잦은 소변, 식욕 증가, 피로, 시야 흐림, 목이나 겨드랑이, 사타구니 주위의 피부가 어두워짐, 의도하지 않은 체중 감소(제1형 당뇨병 소아보다 드물지만 발생할 수 있음), 빈번한 감염.",
+    "1200": null
+  },
+  "정의": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}

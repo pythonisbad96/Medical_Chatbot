@@ -1,0 +1,45 @@
+{
+  "병명": "화염상모반",
+  "증상": {
+    "Amc": null,
+    "Snu": "보통 태어날 때부터 발견되며, 선홍색 혹은 짙은 붉은색의 반점으로 나타난다. 모양이나 크기, 색은 개인차가 있다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "정의": {
+    "Amc": null,
+    "Snu": "발생학적 이상에 의해 모세혈관 기형을 보이는 질환이다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": "최근 GNAQ(Q-class G protein a-subunit) 유전자의 돌연변이에 의해 MAPK(Mitogen-activated protein kinase) 경로의 활성화가 유도되어 발생된다고 보고되었다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": null,
+    "Snu": "모세혈관의 기형만 관찰되는 경우 Pulsed dye laser 등의 레이저 치료에 의해 증상이 호전되거나 치료될 수 있다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": null,
+    "Snu": "피부과",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}

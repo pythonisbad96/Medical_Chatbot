@@ -1,0 +1,45 @@
+{
+  "병명": "방사선 장염",
+  "증상": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": "방사선 장염의 증상으로는 설사, 메스꺼움, 구토, 복부 경련이 있습니다. 이러한 증상은 암 치료를 위한 방사선 요법으로 인해 장이 자극을 받아 발생합니다. 일반적으로 치료가 끝난 후 몇 주가 지나면 증상이 사라지지만, 때로는 더 오래 지속되기도 합니다. 장기적인 방사선 장염은 빈혈과 장 폐색을 유발할 수 있습니다. 방사선 장염의 위험 요인은 복부와 골반 부위의 암에 대해 방사선 치료를 받는 사람들에게서 더 높게 나타납니다. 방사선 요법이 장을 자극하여 방사선 장염이 발생할 수 있습니다.",
+    "1200": null
+  },
+  "정의": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}

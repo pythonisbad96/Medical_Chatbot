@@ -1,0 +1,51 @@
+{
+  "병명": "에이즈",
+  "증상": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": [
+      "근육 소모, 목의 반점, 고열, 혼외 접촉",
+      "목에 반점, 고열, 외도 경험",
+      "근육 소모, 목의 반점, 외도 경험",
+      "근육 소모, 목의 반점, 고열",
+      "근육 소모, 고열, 혼외 접촉"
+    ],
+    "1200": null
+  },
+  "정의": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}

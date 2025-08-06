@@ -1,0 +1,45 @@
+{
+  "병명": "스트레스 골절",
+  "증상": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": "처음에는 피로 골절로 인한 통증을 거의 느끼지 못할 수 있지만, 시간이 지남에 따라 통증이 심해지는 경향이 있습니다. 압통은 보통 특정 지점에서 시작되며, 휴식을 취하면 감소합니다. 통증이 있는 부위 주변에 부종이 생길 수도 있습니다.",
+    "1200": null
+  },
+  "정의": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}
