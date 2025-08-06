@@ -27,6 +27,7 @@ df_snu = pd.read_csv(os.path.join(data, "snu.csv"))
 # 3. 임베딩 모델 준비 (최초 1회)
 embedding_model = HuggingFaceEmbeddings(model_name="jhgan/ko-sbert-sts")
 
+
 # 4. 단어 단위 chunking 함수
 def chunk_by_words(texts, chunk_size=60):
     chunks = []
@@ -35,10 +36,11 @@ def chunk_by_words(texts, chunk_size=60):
             continue
         words = str(text).split()
         for i in range(0, len(words), chunk_size):
-            chunk = " ".join(words[i:i + chunk_size])
+            chunk = " ".join(words[i : i + chunk_size])
             if chunk.strip():
                 chunks.append(chunk)
     return chunks
+
 
 # 5. 각 파일별 chunk + 벡터DB 저장 (최초 1회, 그 후엔 필요X)
 def prepare_faiss():
@@ -110,6 +112,7 @@ def prepare_faiss():
     db_snu = FAISS.from_texts(chunks_snu, embedding=embedding_model)
     db_snu.save_local("vector_db/faiss_db_snu")
 
+
 # 최초 1회만 실행
 prepare_faiss()
 
@@ -155,24 +158,58 @@ while True:
     retrieved_context = "\n---\n".join(context_candidates)
 
     # 8. 프롬프트 생성 (질문+참고문서 포함)
-    prompt = f"""
-아래는 환자 상담을 위한 질의와 참고 문서입니다.  
-[사용자 질문]  
-{user_question}
+    #     prompt = f"""
+    # 아래는 환자 상담을 위한 질의와 참고 문서입니다.
+    # [사용자 질문]
+    # {user_question}
 
-[참고 문서]  
+    # [참고 문서]
+    # {retrieved_context}
+
+    # 아래 환자 증상에 대해 반드시 1~5번 형식으로 딱 한 번만 출력하세요.
+    # 1,5번 항목은 '-입니다.', '-합니다.'와 같은 존댓말 종결어미로 통일하며, 설명을 반복하거나 불필요한 줄바꿈 없이 자연스럽게 작성해주세요.
+    # 특히 1번 항목에서 언급된 첫 번째 병명은 일반인도 이해할 수 있도록 간단하게 정의해 주세요.
+
+    # 1. 예상되는 병명(2~3가지) :
+    # 2. 병명 정의 :
+    # 3. 추천 진료과(2-3과 추천) :
+    # 4. 예방 및 관리 방법(2줄 이내) :
+    # 5. 기타 환자에게 필요한 정보(생활/주의사항/추가정보 포함) :
+    # """
+    prompt = f"""
+당신은 의료 상담 챗봇입니다.
+
+사용자 질문이 **건강/증상/의학 관련이면**, 아래 [증상 정보]를 참고하여 1~5번 항목을 작성하세요.  
+**하지만** 질문이 음식, 여행, 생활 상식 등 **의료와 무관한 경우**에는 [증상 정보]를 무시하고 자유롭게 답변하세요.  
+
+항상 존댓말(-입니다, -합니다)로 답변하며, 내부 생각 없이 **최종 답변만 출력**하세요.
+
+---
+
+질문: {user_question}
+
+---
+
+[증상 정보]
 {retrieved_context}
 
-아래 환자 증상에 대해 반드시 1~5번 형식으로 딱 한 번만 출력하세요.  
-1,5번 항목은 '-입니다.', '-합니다.'와 같은 존댓말 종결어미로 통일하며, 설명을 반복하거나 불필요한 줄바꿈 없이 자연스럽게 작성해주세요.  
-특히 1번 항목에서 언급된 첫 번째 병명은 일반인도 이해할 수 있도록 간단하게 정의해 주세요.
+---
 
-1. 예상되는 병명(2~3가지) :  
-2. 병명 정의 :  
-3. 추천 진료과(2-3과 추천) : 
-4. 예방 및 관리 방법(2줄 이내) :  
-5. 기타 환자에게 필요한 정보(생활/주의사항/추가정보 포함) :  
-"""
+출력 형식:
+(의료 질문일 경우)
+
+1. 예상되는 병명 (2~3가지):  
+   - 첫 번째 병명은 간단한 설명도 포함해주세요.
+
+2. 주요 원인:
+3. 추천 진료과 (2~3과):
+4. 예방 및 관리 방법:
+5. 생활 시 주의사항:
+
+(비의료 질문일 경우)
+
+답변:
+""".strip()
 
     # 9. SKT A.X-4.0 API로 답변 생성
     client = OpenAI(
