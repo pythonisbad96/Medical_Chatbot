@@ -1,0 +1,45 @@
+{
+  "병명": "중쇄 아실코에이 탈수소효소 결핍증",
+  "증상": {
+    "Amc": "① 임상적 진단- 건강하던 아이에게 Hypoketotic hypoglycemia, 기면, 발작, 혼수 상태 유발이 나타남- 간 비대, 급성 간 질환(급성 비염증성 뇌병변, 고암모니아혈증, 간 기능 장애, 간의 지방 침윤 등의 특징으로 인해 Reye syndrome으로 오진될 수 있음) ② 갑작스럽고 설명 불가능한 사망 생후 2년까지 이러한 급성 증상이 처음 나타나며, 성인기에까지 영향을 미칩니다. 갑작스럽고 설명 불가능한 사망은 이 질환의 첫 번째 임상 증상입니다. ③ 테스팅Plasma acylcarnitine analysis, Plasma fatty acid analysis, Urine organic acid analysis/Urine acylglycine analysis, Analysis of fatty acid β-oxidation in cultured fibroblasts/Analysis of MCAD enzyme activity, Newborn screening, postmortem diagnosis 등의 검사를 시행합니다. ④ 분자유전학적 검사ACADM은 이 질환과 관련된 유일한 유전자입니다. 이는 염색체 1p31에 위치하며, 유전학적 진단이 가능합니다.",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "정의": {
+    "Amc": "중쇄 아실코에이 탈수소효소(Medium-chain acyl-coenzyme A dehydrogenase, MCAD)는 mitochondrial fatty acid β-oxidation에 연관된 효소 중의 하나로, hepatic ketogenesis의 원료입니다. 이는 hepatic glycogen 저장 시 에너지의 주요원으로 저장되어 있다가 오랫동안 금식 상태이거나 에너지의 사용이 높아지는 기간에 활성화됩니다.  중쇄 아실코에이 탈수소효소 결핍증(MCAD deficiency)은 건강하던 아이가 hypoketotic hypoglycemia, 구토, 기면 유발 등의 특성을 보이는 질환입니다. 간비대와 급성 간 질환이 자주 발생하며, 발작이 일어날 수 있습니다. 이러한 증상은 혼수와 사망으로 빠르게 이어질 수 있습니다. 처음 태어날 때는 정상이었다가 생후 24개월~3세 사이에 전형적인 증후들이 나타나기 시작합니다. 간혹 성인기에 증상이 나타날 수도 있습니다.  이 질환은 북유럽 기원의 백인에게 발병할 가능성이 큽니다. 발병률은 민족에 따라 4,900~17,000명당 1명 정도로 다양하게 나타납니다. 이 질환은 상염색체 열성으로 유전합니다.",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": "① 임상적 진단- 건강하던 아이에게 Hypoketotic hypoglycemia, 기면, 발작, 혼수 상태 유발이 나타남- 간 비대, 급성 간 질환(급성 비염증성 뇌병변, 고암모니아혈증, 간 기능 장애, 간의 지방 침윤 등의 특징으로 인해 Reye syndrome으로 오진될 수 있음)  ② 갑작스럽고 설명 불가능한 사망 생후 2년까지 이러한 급성 증상이 처음 나타나며, 성인기에까지 영향을 미칩니다. 갑작스럽고 설명 불가능한 사망은 이 질환의 첫 번째 임상 증상입니다.  ③ 테스팅Plasma acylcarnitine analysis, Plasma fatty acid analysis, Urine organic acid analysis/Urine acylglycine analysis, Analysis of fatty acid β-oxidation in cultured fibroblasts/Analysis of MCAD enzyme activity, Newborn screening, postmortem diagnosis 등의 검사를 시행합니다.  ④ 분자유전학적 검사ACADM은 이 질환과 관련된 유일한 유전자입니다. 이는 염색체 1p31에 위치하며, 유전학적 진단이 가능합니다.",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": "이 질환의 임상 증상은 항상 '응급' 상황에 해당합니다. 따라서 증상이 나타나기 전에 진단하는 것이 중요합니다. 조기 진단과 치료는 좋은 예후를 가져올 수 있습니다. 만일 조기 진단이 이루어지지 않거나 적절한 치료가 시행되지 않으면, 환자의 25% 정도가 사망에 이릅니다.  이 질환은 초기 증상인 저혈당을 예방해야 합니다. 급성기에는 포도당을 정맥 내로 투여해야 합니다. 초기 증상을 예방하기 위해 가장 중요한 점은 12시간 이상 금식하면 안 된다는 것입니다. 신생아는 자주 수유를 해야 합니다. 유아는 수면 시간에 생옥수수 전분 가루를 섭취합니다(2g/kg).",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": "의학유전학센터, 의학유전학과",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}

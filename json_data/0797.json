@@ -1,0 +1,45 @@
+{
+  "병명": "바이러스 출혈열",
+  "증상": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": "바이러스성 출혈열의 징후와 증상은 질병에 따라 다를 수 있습니다. 일반적으로 초기 징후와 증상에는 다음이 포함될 수 있습니다: 발열, 피로, 쇠약감 또는 전반적인 불쾌감, 어지러움, 근육, 뼈 또는 관절 통증, 메스꺼움과 구토, 설사. 생명을 위협할 수 있는 더 심각한 증상으로는 다음이 있습니다: 피부 아래, 내부 장기, 또는 입, 눈, 귀에서의 출혈, 신경계 기능 장애, 혼수상태, 섬망, 신부전, 호흡 부전, 간부전.",
+    "1200": null
+  },
+  "정의": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}

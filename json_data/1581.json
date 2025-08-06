@@ -1,0 +1,45 @@
+{
+  "병명": "위산과다",
+  "증상": {
+    "Amc": null,
+    "Snu": "원인 및 연관질환과 중증도에 따라 무증상부터 복통, 속 쓰림, 복부 팽만감, 구역, 구토, 설사, 지방변, 체중감소, 위장관 출혈에 이르기까지 다양한 증상이 동반될 수 있다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "정의": {
+    "Amc": null,
+    "Snu": "위산과다란 위의 벽세포(Parietal cell) 에서 분비되는 위산(염산, HCl) 의 양이 비정상적으로 많거나 위의 산도가 비정상적으로 높은 상태를 뜻한다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": "여러 원인이 있을 수 있으며, 대표적으로 위산 분비를 조절하는 호르몬의 이상으로 인해 발생할 수 있다. 가스트린(Gastrin) 이나 히스타민(Histamine) 등의 호르몬은 벽세포(Parietal cell) 에서 위산의 분비를 촉진하는데, 이러한 호르몬이 과도하게 분비될 경우 위산과다가 발생할 수 있다. 헬리코박터 파일로리 균에 의한 만성 위염, 위날문막힘(Gastric outlet obstruction), 단장 증후군(Short bowel syndrome, SBS), 잔류 전정부 증후군(Retained antrum syndrome), 가스트린종(Gastrinoma) 과 연관된 졸링거-엘리슨 증후군(Zollinger–Ellison syndrome, ZES) 등에서 가스트린 분비가 증가할 수 있으며, 비만 세포증(Systemic mastocytosis) 과 같은 드문 질환에서도 히스타민의 분비가 비정상적으로 증가할 수 있다. 이외에도 위산 억제제를 사용하다가 중단하는 경우 반동 과다 위산분비(Rebound acid hypersecretion) 가 생길 수 있으며, 기전은 명확하게 밝혀지지 않았으나 만성 췌장염 , 종양, 갑상선 기능 항진증 , 약제 및 과도한 운동, 두부 수상, 수술, 화상, 패혈증 등과 연관된 심한 스트레스 상황 등 다른 다양한 원인에 의해 발생할 수 있다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": null,
+    "Snu": "약물 치료로 양성자 펌프 억제제(Proton pump inhibitor) 나 H2 수용체 억제제(H2 receptor blocker) 와 같은 위산 분비 억제제를 사용할 수 있으며 원인에 따라 소마토스타틴 유도체(Somatostatin anaglogue)를 사용하기도 한다. 가스트린종과 같은 종양의 경우 수술적 치료를 고려한다. 치료는 증상 및 원인에 따라 개별화하여 결정한다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": null,
+    "Snu": "소화기내과",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "병명": "자궁경부비정형세포",
+  "증상": {
+    "Amc": null,
+    "Snu": "대부분은 무증상인 경우가 많으며, 그 외 비정상적인 질 출혈 이나 성교 시 통증 및 출혈, 질 분비물 증가 등이 발생할 수 있다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "정의": {
+    "Amc": null,
+    "Snu": "자궁경부의 비정형 편평상피세포(ASC)는 정상 편평상피세포가 인유두종바이러스(HPV)의 지속적인 감염으로 인해 변형된 세포로 암으로 진행할 수 있는 위험을 가지고 있다. ASCUS(Atypical Squamous Cells of Undetermined Significance)와 ASC-H(Atypical Squamous Cells, cannot rule out a High grade lesion)로 구분된다. 둘 중에서 상대적으로 ASCUS는 고등급 자궁경부 상피내종양이나 침윤성 자궁경부암 의 가능성이 더 낮기 때문에, ASCUS 세포검사 결과만으로 절제술 등의 치료를 결정하지 않고 질확대경 등 조직검사 소견을 기반으로 치료방침을 결정해야 한다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": "자궁경부에 인유두종바이러스(Human Papilloma Virus, HPV)의 지속 감염으로 인해 나타난다고 알려져 있다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": null,
+    "Snu": "1) ASCUS(Atypical Squamous Cells of Undetermined Significance)의 치료 반복적인 자궁경부 세포진검사, 고위험군 인유두종바이러스(HPV) 검사를 시행할 수 있다. 6개월마다 반복적으로 자궁경부 세포진검사를 시행하였을 때 이후 검사에서 ASCUS 이상으로 세포검사 결과가 나온다면 질확대경검사를 반드시 시행해야 한다. 이때 결과가 음성이라면 일반 선별검사 프로그램으로 복귀할 수 있고, 고위험 HPV 검사가 음성일 경우에도 질확대경검사 없이 일반 선별검사 프로그램으로 복귀할 수 있지만 국내 검사 비용을 고려하였을 때는 HPV 결과와 상관없이 질확대경검사 시행을 고려할 수 있다. HPV 검사 결과 바이러스가 양성으로 나온 경우 질확대경 검사를 시행한다. 2) ASC-H(Atypical Squamous Cells, cannot rule out a High grade lesion)의 치료 추가로 질확대경검사를 권고한다. 추가 조직검사에서 중등도 자궁경부 상피내종양(CIN2) 이상의 병변이 나오지 않을 경우 세포검사, 조직검사, 질확대경검사 소견을 재판독할 수 있습니다. 이 경우 6개월 간격으로 자궁경부 세포검사와 질확대경검사를 시행할 수 있다. 6개월 가격으로 2회 연속 정상으로 판독될 경우 일반 선별검사 프로그램으로 복귀할 수 있다. 중등도 자궁경부 상피내종양(CIN2) 이상의 병변이 확인되었다면 진단 목적의 절제술을 반드시 시행하여야 한다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": null,
+    "Snu": "산부인과",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}

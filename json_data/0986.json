@@ -1,0 +1,45 @@
+{
+  "병명": "사구체종양",
+  "증상": {
+    "Amc": null,
+    "Snu": "살짝 스치거나 부딪혀도 통증을 심하게 느끼고, 손톱 밑이나 주변을 누르면 극심한 통증을 호소하며, 날씨가 추워지거나, 차가운 물에 닿으면 민감하고 통증을 느끼는 것이 주 증상이다. 또한 크기나 위치에 따라서 손톱 밑에 푸른색의 점이 생기거나 손톱 변형이 생기기도 한다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "정의": {
+    "Amc": null,
+    "Snu": "피부의 망상 진피(Reticular dermis)에 위치하여 체온, 혈압 조절을 돕는 기능을 갖고 있는 신경-근-동맥성 구조(Neuromyoatrial apparatus)인 사구소체(Glomus body)의 이상 비대에 의한 양성 종양으로 우리 몸에 어디에서나 발생할 수 있지만, 주로 손톱 밑(Subungual area)에 위치하며 1 cm 미만의 자주빛 종괴이다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": "수부 종양 중 약 1~5% 정도를 차지하며, 75%가 손톱 밑 부위에서 발견되며, 젊은 여자에서 호발한다. 정확한 원인은 현재까지 밝혀진 바가 없다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": null,
+    "Snu": "수술적 완전 절제가 유일한 치료법이다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": null,
+    "Snu": "정형외과",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}

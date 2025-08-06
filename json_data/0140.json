@@ -1,0 +1,45 @@
+{
+  "병명": "경계선 지적 지능",
+  "증상": {
+    "Amc": null,
+    "Snu": "평균보다 낮은 지적능력으로 개념적, 사회적, 실행적 영역에서 기능의 저하가 존재할 수 있다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "정의": {
+    "Amc": null,
+    "Snu": "경계선 지능은 지적장애 수준은 아니지만 평균보다 낮은 지적능력을 의미한다. 일반적으로 지능평가 상 IQ 70~85를 의미한다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": null,
+    "Snu": "명확하게 원인이 밝혀져 있지 않다. 신경 섬유종 증(Neurofibromatosis), 취약X증후군(Fragile X syndrome) 등의 유전질환에서 지능이 낮아질 위험도가 높다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": null,
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": null,
+    "Snu": "반드시 치료가 필요한 질병의 개념은 아니지만 개념적, 사회적, 실행적 영역의 뒤처지는 부분에 대해 지원이 필요할 수 있다. 학습에 대한 교육적 지원, 사회성 훈련, 직업 훈련 등이 도움이 될 수 있다.",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": null,
+    "Snu": "정신건강의학과",
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}

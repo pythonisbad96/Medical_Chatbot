@@ -1,0 +1,45 @@
+{
+  "병명": "MERRF",
+  "증상": {
+    "Amc": "MERRF 증후군은 Shapira 등에 의하여 처음 용어가 사용되었을 때는 '사립체성 뇌근병증(mitochondrial encephalomyopathy)' 또는 '사립체성 근병증(mitochondrial myopathy)'이라고 불렸습니다. 이처럼 사립체의 형태학적, 기능적 이상이 있으면서 골격근 이외에 여러 장기들이 침범당하는 것이 주된 증상입니다. 사립체의 형태학적, 기능적 이상과 근육 신경계의 장애 등이 특징으로 나타납니다. 이는 매우 희귀한 질환으로, 비교적 최근에 알려지기 시작했습니다. 이 질환에 대한 연구는 현재까지 임상적, 생화학적, 병리학적, 유전학적으로 각기 분류되어 진행되고 있습니다. 현재 한 쪽의 분류가 다른 쪽의 분류를 충분히 설명하지 못하는 단계이기 때문에, 진단하기 어려운 경우가 종종 발생합니다. 임상적인 분류로는 DiMauro 등이 분류한 3가지 주요 증후군이 가장 널리 알려져 있습니다. ① Kearns와 Sayre가 1958년 보고한 Kearns-Sayre 증후군② Fukuhara 등이 1980년 처음으로 보고한 MERRF(Myoclonic Epilepsy with Ragged-Red Fiber) 증후군③ Pavlakis 등이 1984년 처음 보고한 MELAS(Mitochondrial Myopathy, Encephalopathy, Lactic Acidosis, and Stroke-like Episodes) 증후군 유전학적인 측면에서 살펴보면, 사립체는 핵과는 다른 고유 정보를 가진 DNA(mitochondrial DNA)를 가지고 있으며, 모성 유전(maternal inheritance)을 하는 특이한 세포 내 소기관입니다. 이는 대부분의 세포에 존재하고 있으므로, 골격근뿐만 아니라 뇌 및 기타 여러 장기를 침범하여 전신적인 근무력, 외안근 마비, 말초신경변증, 중추신경계 증상 등과 같은 다양한 임상 양상을 일으킵니다.",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "정의": {
+    "Amc": "MERRF(Myoclonic Epilepsy with Ragged Red Fiber) 증후군은 사립체성 뇌근병증 중 하나의 질환입니다. 이는 1980년 후쿠하라(Fukuhara) 등이 처음 보고한 질환으로, 비교적 드문 질환입니다. 임상적으로는 간대성 근경련(progressive myoclonus), 간질(epilepsy), 운동 실조(ataxia), 사지 무력, 치매(dementia) 등의 특징이 있습니다. 조직 병리학적으로는 근육 생검상 modified Gomori trichrome 염색에 의하여 \"불균일적적색근섬유(ragged-red fibers(RRF))\"가 관찰됩니다. 전자현미경적으로는 사립체의 숫자나 크기 등의 변화가 확인됩니다.",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "원인": {
+    "Amc": "MERRF는 사립체 유전자 tRNALys의 8344 위치에서 adenine(A)이 guanine(G)으로 치환된 점 돌연변이가 가장 많이 보고되었습니다. 8356 위치에서 thymine(T)이 cytosine(C)으로 치환된 돌연변이의 예가 보고되기도 합니다. 이 질환에 대한 분자병리학적인 이해가 시도되고 있습니다.",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진단": {
+    "Amc": "MERRF 증후군은 사립체 유전자 진단이 중요합니다. 근육 조직 검사는 보조적인 검사입니다. 한편 이 증후군은 근육 조직 효소 분석을 통해 진단할 수도 있습니다.",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "치료": {
+    "Amc": "MERRF 증후군은 경련 예방과 치료가 중요합니다. 질환의 전반적 진행을 막을 수는 없습니다.",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  },
+  "진료과": {
+    "Amc": "의학유전학센터, 의학유전학과",
+    "Snu": null,
+    "Kdca": null,
+    "Final": null,
+    "1200": null
+  }
+}
