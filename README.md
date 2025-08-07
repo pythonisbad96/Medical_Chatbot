@@ -1,130 +1,103 @@
-# 🧠 진료지원용 RAG 챗봇 (의료진용, LangChain + Qdrant)
+# 진료지원용 RAG 챗봇 프로토타입
 
-> 본 프로젝트는 병원 의료진이 환자 진료 시 실시간으로 의학 지식, 약제 정보, 환자 이력 등을 검색하고 활용할 수 있도록 설계된 **LangChain 기반 RAG 챗봇**입니다. 빠른 응답과 높은 정확성을 위해 한국어에 특화된 LLM인 **EXAONE-3.5-2.4B-Instruct** 모델을 단일로 사용하며, 벡터 검색에는 **Qdrant**를 활용합니다. 웹 서비스는 **Django 기반**으로 구현됩니다.
+## 1\. 개발 배경 및 프로젝트 개요
 
----
+본 프로젝트는 불확실한 온라인 정보와 병원 방문의 어려움으로 인해 정확한 의료 정보를 얻기 힘든 문제를 해결하기 위해 기획되었습니다. 검증된 의료 데이터를 기반으로 사용자에게 신뢰할 수 있는 정보를 제공하는 **콘솔 기반 RAG (Retrieval-Augmented Generation) 챗봇** 프로토타입입니다.
 
-## 📌 목차
+LangChain 프레임워크를 기반으로 멀티턴(multi-turn) 대화를 지원하며, 한국어에 특화된 임베딩 모델과 **FAISS**를 활용한 효율적인 벡터 검색을 구현했습니다. 이를 통해 사용자의 증상에 기반한 질의응답이 가능하도록 설계되었습니다.
 
-1. 프로젝트 개요  
-2. 주요 기능 시나리오  
-3. 데이터 처리 및 구축 방식  
-4. 아키텍처 구조 (💡중요)  
-5. 모델 구성 및 기술 스택  
-6. 향후 확장 방향  
-7. 최종 요약
+-----
 
----
+## 2\. 주요 기능 및 구현 시나리오
 
-## 1. 프로젝트 개요
+### 주요 기능
 
-| 항목         | 설명 |
-|--------------|------|
-| 프로젝트명    | 진료지원용 RAG 챗봇 |
-| 대상 사용자   | 병원 내 의사 및 의료진 |
-| 목적         | 증상 기반 진단 지원 + 약제 추천 + 약물 주의사항 안내 |
-| 주요 기술     | EXAONE-3.5 + Qdrant + LangChain + Django |
-| 활용 데이터   | 증상–질환 매핑, 질환–약제 매핑, 약물 금기/주의 DB, 공공 API, PDF |
+  - **지능형 의료 상담:** 사용자의 증상 질문에 대해 RAG 모델이 관련 의학 데이터를 검색하여 **예상 병명**, **추천 진료과**, **예방 및 관리 방법** 등 구조화된 정보를 제공합니다.
+  - **자연스러운 대화:** 의료 관련 질문 외에 일상적인 대화가 입력될 경우, 일반 LLM(Large Language Model)이 자연스럽게 응답하여 사용자 친밀도를 높입니다.
+  - **멀티턴 대화 지원:** 대화 히스토리를 기억하고 맥락에 맞는 답변을 생성합니다.
+  - **다중 벡터 DB 검색:** 여러 데이터셋으로 구축된 개별 FAISS DB를 동시에 검색하여 포괄적인 지식을 활용합니다.
 
----
+### 시나리오 예시
 
-## 2. 통합 주요 기능 시나리오
+1.  **의료 질문**: 사용자가 "배가 아프고 설사를 해요"와 같은 증상을 입력하면, 챗봇은 관련 질병 정보(예상 병명, 원인, 진료과)를 포함하여 구조화된 답변을 제공합니다.
+2.  **일반 질문**: "오늘 날씨는 어때?"와 같은 비의료 질문에는 RAG를 생략하고, 대화 모델의 기본 지식을 활용하여 자연스럽게 응답합니다.
 
-### ✅ 증상 입력 기반 통합 시나리오
+-----
 
-- **입력**: `"기침, 가래, 발열"` 또는 `"두통이 있는 환자에게 적절한 약은?"`
-- **출력**:
-  - 관련 질환 추천: `급성기관지염`, `독감`, `폐렴`
-  - 진단 가이드: `CRP 상승`, `청진상 수포음`, `38도 이상 고열`
-  - 일반 약제 추천: `암브록솔`, `아세트아미노펜` 등 + 용량 안내
-  - 약물 주의사항: 고혈압, 당뇨 등 동반 질환 보유 시 금기사항/주의사항 안내
----
+## 3\. 차별점 및 기대 효과
 
-## 3. 데이터 구성 및 전처리
-### 📁 3.1 증상–질환–진단 기준 매핑
-- 질병관리청 자료 기반 수기 구축  
-- 예시:
-  ```json
-  "기침, 가래" → ["폐렴", "기관지염"]
-  "폐렴" → 진단 기준: ["CRP 상승", "청진상 수포음"]
+  - **신뢰성 높은 정보 제공**: 불확실한 인터넷 검색과 달리, 검증된 의학 데이터를 기반으로 신뢰할 수 있는 정보를 제공합니다.
+  - **사용자 편의 증진**: 병원 방문 전후로 필요한 정보를 미리 파악하여 시간과 비용을 절약할 수 있습니다.
+  - **접근성 향상**: 24시간 언제든 이용 가능하여 의료 정보 접근이 어려운 사용자에게도 도움을 제공합니다.
 
-### 📁 3.2 질환–약제 매핑 및 금기/주의사항
-식약처 공공 API (허가정보/주성분정보 등) 사용
+-----
 
-특정 질환 → 일반적으로 사용되는 약제 리스트
+## 4\. 기술 스택 및 아키텍처
 
-약제 → 금기 질환, 복용 시 주의사항 포함
+### 4.1 기술 스택
 
-### 📁 3.3 전처리 요약
-통합 데이터 → JSON 변환
+  - **개발 언어**: Python 3.10+
+  - **프레임워크**: LangChain
+  - **임베딩 모델**: `jhgan/ko-sbert-sts` (HuggingFace Embeddings)
+  - **벡터 데이터베이스**: FAISS (Facebook AI Similarity Search)
+  - **LLM**: ChatOpenAI Wrapper (SKT AX4 모델 연동)
 
-LangChain 문서화 → chunking (size=500, overlap=100)
+\<p align="left"\>
+\<img src="[https://img.shields.io/badge/Python-3.10-blue?logo=python\&logoColor=white](https://img.shields.io/badge/Python-3.10-blue?logo=python&logoColor=white)" alt="Python"\>
+\<img src="[https://img.shields.io/badge/LangChain-v0.1.0-purple?logo=chainlink\&logoColor=white](https://img.shields.io/badge/LangChain-v0.1.0-purple?logo=chainlink&logoColor=white)" alt="LangChain"\>
+\<img src="[https://img.shields.io/badge/FAISS-yellowgreen?logo=facebook\&logoColor=white](https://img.shields.io/badge/FAISS-yellowgreen?logo=facebook&logoColor=white)" alt="FAISS"\>
+\<img src="[https://img.shields.io/badge/SBERT-KO--SBERT-lightblue?logo=semanticweb\&logoColor=black](https://img.shields.io/badge/SBERT-KO--SBERT-lightblue?logo=semanticweb&logoColor=black)" alt="SBERT"\>
+\</p\>
 
-Qdrant 저장 및 질의 연동
-```
+### 4.2 아키텍처
+\![](/rag_model.png)
 
+본 프로젝트는 위 구조도를 기반으로 작동합니다. 사용자의 질문은 LangChain 메모리를 거쳐 RAG 쿼리로 구성되며, FAISS 벡터 DB에서 관련 문서를 검색합니다. 검색된 컨텍스트는 LLM 프롬프트에 주입되어 최종 답변을 생성하고 사용자에게 반환됩니다. 질문이 의료 관련이 아닌 경우, RAG 단계를 건너뛰고 LLM이 직접 응답합니다.
 
----
+-----
 
-## 4. 아키텍처 구조 (💡 핵심)
+## 5\. 데이터셋 및 전처리
 
-<rag_architecture.png>
+### 5.1 활용 데이터셋
 
-### 🔄 전체 흐름
+다양한 의료 데이터를 활용하여 구축된 CSV 파일을 사용했습니다. 특히, **AIhub**의 공개 데이터를 포함하여 신뢰도와 풍부함을 확보했습니다.
 
-1. 사용자가 Django 웹 UI를 통해 질의를 입력합니다.  
-2. 질의는 LangChain을 통해 Qdrant에 전달되어 관련 문서를 검색합니다.  
-3. 검색된 문서(knowledge chunk)는 EXAONE-2.4B 모델의 프롬프트로 삽입됩니다.  
-4. 모델이 적절한 답변을 생성하고, 프론트로 반환됩니다.  
-5. 추후 Feedback 기능 추가도 고려된 구조입니다.
+  - **AIhub 데이터**: 증상-질환 매핑, 일상 표현-의료 용어 변환 데이터 등
+  - **자체 구축 데이터**: 병원 공식 홈페이지 자료(서울대학교 병원, 아산병원 등), 질병관리청 자료 등을 기반으로 정제 및 가공
 
-```txt
-[User] → [Django UI] → [LangChain] → [Qdrant 벡터 검색] → [EXAONE 응답 생성] → [User에게 결과 반환]
-```
+### 5.2 전처리 과정
 
-> 프롬프트 예시:  
-> "너는 내과 전문의야. 아래 환자의 정보와 지식을 참고해 적절한 진단 및 처방 조언을 제공해줘."
+  - 각 데이터셋의 주요 칼럼을 결합하여 단일 문서로 통합합니다.
+  - **단어 단위 청킹 (Chunking)**: `chunk_by_words` 함수를 사용하여 문서의 의미를 보존하면서 단어 단위로 청크를 나눕니다.
+  - **개별 FAISS DB 구축**: 각 데이터셋에 대해 별도의 FAISS DB를 구축하고 관리하여, 효율적인 검색 및 관리 체계를 마련했습니다.
 
----
+-----
 
-## 5. 모델 구성 및 기술 스택
+## 6\. 팀 구성 및 개발 일정
 
-| 구성 요소    | 사용 기술                          |
-| -------- | ------------------------------ |
-| 임베딩 모델   | `KR-SBERT-V40K-klueNLI-augSTS` |
-| 벡터 검색    | `Qdrant (Docker)`              |
-| 검색 프레임워크 | `LangChain`                    |
-| LLM      | `EXAONE-3.5-2.4B-Instruct`     |
-| 웹 백엔드    | `Django` (REST API 기반)         |
-| 프롬프트 전략  | Retrieval + Role Prompting     |
+### 6.1 팀원 및 역할 분담
 
+| 이름 | 역할 분담 |
+|:---|:---|
+| **성민진** (팀장) | 프로젝트 총괄, 일정 및 자원 관리, 데이터 수집 및 관리 |
+| **김상준** | RAG 모델 구현 및 파인튜닝, LLM 연동 최적화 |
+| **김희준** | 데이터 정제 및 전처리, 모델 구현 보조 |
+| **위성권** | 프론트엔드 및 백엔드 개발, 초기 모델 아키텍처 구현 |
 
-### 🛠️ 기술 스택 뱃지
+### 6.2 개발 일정
 
-<p align="left">
-<img src="https://img.shields.io/badge/Python-3.10-blue?logo=python&logoColor=white" alt="Python"> 
-<img src="https://img.shields.io/badge/Django-4.x-darkgreen?logo=django&logoColor=white" alt="Django"> 
-<img src="https://img.shields.io/badge/LangChain-0.1.0-purple?logo=chainlink&logoColor=white" alt="LangChain"> 
-<img src="https://img.shields.io/badge/Qdrant-1.7-orange?logo=data&logoColor=white" alt="Qdrant"> 
-<img src="https://img.shields.io/badge/EXAONE-3.5.2.4B-critical?logo=openai&logoColor=white" alt="EXAONE"> 
-<img src="https://img.shields.io/badge/SBERT-KR-lightblue?logo=semanticweb&logoColor=black" alt="SBERT"> 
-</p>
+| 기간 | 세부 진행 내용 |
+|:---|:---|
+| **7월 1일 - 7월 25일** | **데이터 확보 및 정제**: AIhub 및 공개 데이터를 활용한 초기 데이터셋 확보, 결측치 및 오류 데이터 정제 |
+| **7월 21일 - 8월 10일**| **RAG 모델 구현**: 임베딩 모델 선정 및 청킹 전략 수립, LangChain 기반 RAG 체인 구현 |
+| **7월 28일 - 8월 15일**| **백엔드/프론트엔드 개발**: REST API 개발, 웹 기반 UI 구현, 모델과 UI 연동 |
+| **8월 11일 - 8월 15일**| **통합 및 테스트**: 개발된 컴포넌트 통합 테스트, 버그 수정 및 최종 기능 검증 |
 
----
+-----
 
-## 6. 향후 확장 방향 (우선순위 기반)
+## 7\. 향후 확장 계획
 
-![RAG 아키텍처](./rag_architecture.png)
-
-- 🩺 환자 EMR 요약 기능 재도입 (조건 충족 시)
-- 💊 약물 상호작용 챗봇 모듈화
-- 🗂 PDF / HWP 실시간 파싱 및 벡터화
-- 🧾 질환별 가이드 문서 자동 정리
-- 📡 FHIR 기반 병원 전산 시스템 실시간 연동
-
----
-
-## 7. 💬 최종 요약
-
-> 본 프로젝트는 **EXAONE 단일 모델을 사용하여 빠르고 정확한 의료 특화 응답 생성**을 구현한 진료지원형 챗봇입니다.  
-> LangChain + Qdrant 기반의 구조로 벡터 검색과 지식 주입이 가능하며, Django 기반 UI로 웹서비스화되어 실제 **의료 현장 적용 가능성**까지 염두에 두고 설계되었습니다.
+  - **이미지 기반 진단 기능**: 사용자가 증상 부위를 촬영한 이미지를 업로드하면, AI가 분석하여 초기 소견을 제공하는 기능을 추가할 예정입니다.
+  - **의료기관 연계 서비스**: 사용자의 위치를 기반으로 주변 의료기관을 추천하고, 진료 예약까지 가능한 기능을 구현할 계획입니다.
+  - **긴급 상황 감지**: 챗봇 대화 중 긴급 상황으로 판단될 경우, 지정된 보호자나 응급기관에 자동으로 알림을 보내는 시스템을 구축할 예정입니다.
+  - **다국어 지원**: 외국인 거주자나 방문객도 쉽게 사용할 수 있도록 다국어 지원 기능을 확대할 예정입니다.
