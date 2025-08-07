@@ -1,17 +1,19 @@
-# RAG 파이프라인 context 검색 방식 개선
-
-# - 각 벡터DB에서 top-3씩 검색 후, 전체에서 score 기준 상위 3개만 context로 사용하도록 변경
-# - 중복 context 자동 제거
-# - 사용자 질문을 프롬프트에 명시적으로 포함
-# - chunk 단위를 단어(60단어) 기준으로 변경
+# 멀티턴으로 수정 및 일부 코드 수정
 
 import os
 import pandas as pd
 import glob
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.vectorstores import FAISS
-from openai import OpenAI
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.vectorstores import FAISS
+
+from langchain.memory import ConversationBufferMemory
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain_community.chat_models import ChatOpenAI
+from langchain.chains import LLMChain
+
 import re
+import uuid
+import json
 
 # 1. 데이터 폴더/경로 지정
 data = "./dataset"
@@ -42,15 +44,14 @@ def chunk_by_words(texts, chunk_size=60):
     return chunks
 
 
-# 5. 각 파일별 chunk + 벡터DB 저장 (최초 1회, 그 후엔 필요X)
+# 5. 각 파일별 chunk + 벡터DB 저장 (최초 1회)
 def prepare_faiss():
     os.makedirs("vector_db", exist_ok=True)
-    # 1200_v1
     texts_1200 = df_1200["label"].astype(str) + "\n" + df_1200["text"].astype(str)
     chunks_1200 = chunk_by_words(texts_1200.tolist(), chunk_size=60)
     db_1200 = FAISS.from_texts(chunks_1200, embedding=embedding_model)
     db_1200.save_local("vector_db/faiss_db_1200_v1")
-    # amc
+
     amc_texts = (
         df_amc["병명"].astype(str)
         + "\n"
@@ -67,17 +68,17 @@ def prepare_faiss():
     chunks_amc = chunk_by_words(amc_texts.tolist(), chunk_size=60)
     db_amc = FAISS.from_texts(chunks_amc, embedding=embedding_model)
     db_amc.save_local("vector_db/faiss_db_amc")
-    # daily
+
     daily_texts = df_daily["증상"].astype(str) + "\n" + df_daily["일상말"].astype(str)
     chunks_daily = chunk_by_words(daily_texts.tolist(), chunk_size=60)
     db_daily = FAISS.from_texts(chunks_daily, embedding=embedding_model)
     db_daily.save_local("vector_db/faiss_db_daily_dataset")
-    # final_v7
+
     final_texts = df_final["label"].astype(str) + "\n" + df_final["text"].astype(str)
     chunks_final = chunk_by_words(final_texts.tolist(), chunk_size=60)
     db_final = FAISS.from_texts(chunks_final, embedding=embedding_model)
     db_final.save_local("vector_db/faiss_db_final_v7")
-    # kdca
+
     kdca_texts = (
         df_kdca["병명"].astype(str)
         + "\n"
@@ -94,7 +95,7 @@ def prepare_faiss():
     chunks_kdca = chunk_by_words(kdca_texts.tolist(), chunk_size=60)
     db_kdca = FAISS.from_texts(chunks_kdca, embedding=embedding_model)
     db_kdca.save_local("vector_db/faiss_db_kdca")
-    # snu
+
     snu_texts = (
         df_snu["병명"].astype(str)
         + "\n"
@@ -113,8 +114,9 @@ def prepare_faiss():
     db_snu.save_local("vector_db/faiss_db_snu")
 
 
-# 최초 1회만 실행
-prepare_faiss()
+# 최초 1회만 실행 (이미 저장돼 있으면 생략)
+if not os.path.exists("vector_db/faiss_db_1200_v1/index.faiss"):
+    prepare_faiss()
 
 # 6. 벡터DB 로드 (매번)
 db_paths = [
@@ -130,53 +132,37 @@ db_list = [
     for db_path in db_paths
 ]
 
-while True:
-    user_question = input("질문을 입력하세요(종료: exit): ")
-    if user_question.lower() in ["exit", "quit", "종료"]:
-        print("프로그램을 종료합니다.")
-        break
 
-    # 7. DB별 top-3씩 추출 → score 기준 통합정렬, 중복 제거, 상위 3개만 context
-    top_k_per_db = 3
-    all_docs = []
-    for db in db_list:
-        docs = db.similarity_search_with_score(user_question, k=top_k_per_db)
-        all_docs.extend(docs)
+# 7. 대화 세션/상태 관리
+class ChatSession:
+    def __init__(self, session_id=None):
+        self.session_id = session_id or str(uuid.uuid4())
+        self.history = []
 
-    # 유사도 score 기준 내림차순(낮을수록 유사), chunk 내용 중복 제거
-    all_docs_sorted = sorted(all_docs, key=lambda x: x[1])
-    seen = set()
-    context_candidates = []
-    for doc, score in all_docs_sorted:
-        # 완전 중복 chunk는 1회만
-        if doc.page_content not in seen:
-            context_candidates.append(doc.page_content)
-            seen.add(doc.page_content)
-        if len(context_candidates) == 3:  # 최종 context 3개만 사용
-            break
+    def save(self, path="session_logs/"):
+        os.makedirs(path, exist_ok=True)
+        with open(
+            os.path.join(path, f"{self.session_id}.json"), "w", encoding="utf-8"
+        ) as f:
+            json.dump(self.history, f, ensure_ascii=False, indent=2)
 
-    retrieved_context = "\n---\n".join(context_candidates)
+    def append(self, user, message):
+        self.history.append({"role": user, "message": message})
 
-    # 8. 프롬프트 생성 (질문+참고문서 포함)
-    #     prompt = f"""
-    # 아래는 환자 상담을 위한 질의와 참고 문서입니다.
-    # [사용자 질문]
-    # {user_question}
 
-    # [참고 문서]
-    # {retrieved_context}
+# 8. LangChain 멀티턴 대화 & 커스텀 프롬프트
+llm = ChatOpenAI(
+    openai_api_base="https://guest-api.sktax.chat/v1",
+    openai_api_key="sktax-XyeKFrq67ZjS4EpsDlrHHXV8it",
+    model="ax4",
+)
 
-    # 아래 환자 증상에 대해 반드시 1~5번 형식으로 딱 한 번만 출력하세요.
-    # 1,5번 항목은 '-입니다.', '-합니다.'와 같은 존댓말 종결어미로 통일하며, 설명을 반복하거나 불필요한 줄바꿈 없이 자연스럽게 작성해주세요.
-    # 특히 1번 항목에서 언급된 첫 번째 병명은 일반인도 이해할 수 있도록 간단하게 정의해 주세요.
+memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 
-    # 1. 예상되는 병명(2~3가지) :
-    # 2. 병명 정의 :
-    # 3. 추천 진료과(2-3과 추천) :
-    # 4. 예방 및 관리 방법(2줄 이내) :
-    # 5. 기타 환자에게 필요한 정보(생활/주의사항/추가정보 포함) :
-    # """
-    prompt = f"""
+
+# 9. 프롬프트 생성 함수 (모든 질문에서 동일하게 사용)
+def make_prompt(user_question, retrieved_context):
+    return f"""
 당신은 의료 상담 챗봇입니다.
 
 사용자 질문이 **건강/증상/의학 관련이면**, 아래 [증상 정보]를 참고하여 1~5번 항목을 작성하세요.  
@@ -185,48 +171,82 @@ while True:
 항상 존댓말(-입니다, -합니다)로 답변하며, 내부 생각 없이 **최종 답변만 출력**하세요.
 
 ---
-
 질문: {user_question}
-
 ---
-
 [증상 정보]
 {retrieved_context}
-
 ---
-
 출력 형식:
 (의료 질문일 경우)
-
 1. 예상되는 병명 (2~3가지):  
    - 첫 번째 병명은 간단한 설명도 포함해주세요.
-
 2. 주요 원인:
 3. 추천 진료과 (2~3과):
 4. 예방 및 관리 방법:
 5. 생활 시 주의사항:
 
 (비의료 질문일 경우)
-
 답변:
 """.strip()
 
-    # 9. SKT A.X-4.0 API로 답변 생성
-    client = OpenAI(
-        base_url="https://guest-api.sktax.chat/v1",
-        api_key="sktax-XyeKFrq67ZjS4EpsDlrHHXV8it",
+
+# LLMChain용 프롬프트 템플릿 (messages 기반)
+def build_prompt(dynamic_prompt):
+    return ChatPromptTemplate.from_messages(
+        [
+            ("system", dynamic_prompt),
+            MessagesPlaceholder(variable_name="chat_history"),
+            ("user", "{input}"),
+        ]
     )
 
-    response = client.chat.completions.create(
-        model="ax4",
-        messages=[{"role": "user", "content": prompt}],
-    )
-    answer = response.choices[0].message.content.strip()
 
-    # 10. 번호 답변만 추출 (1~5)
+# main loop
+session = ChatSession()
+print(f"새로운 세션이 시작되었습니다. session_id: {session.session_id}\n")
+
+while True:
+    user_question = input("질문을 입력하세요(종료: exit): ")
+    if user_question.lower() in ["exit", "quit", "종료"]:
+        print("프로그램을 종료합니다.")
+        session.save()
+        break
+
+    # 1. 멀티턴 기반 RAG 쿼리 구성 (최근 유저 history 2개 + 현재 질문)
+    prev_utts = [h["message"] for h in session.history if h["role"] == "user"]
+    rag_query = " ".join(prev_utts[-2:] + [user_question])
+
+    # 2. RAG 컨텍스트 항상 생성
+    top_k_per_db = 3
+    all_docs = []
+    for db in db_list:
+        docs = db.similarity_search_with_score(rag_query, k=top_k_per_db)
+        all_docs.extend(docs)
+    all_docs_sorted = sorted(all_docs, key=lambda x: x[1])
+    seen = set()
+    context_candidates = []
+    for doc, score in all_docs_sorted:
+        if doc.page_content not in seen and len(doc.page_content) >= 30:
+            context_candidates.append(doc.page_content.strip())
+            seen.add(doc.page_content)
+        if len(context_candidates) == 3:
+            break
+    retrieved_context = "\n---\n".join(context_candidates) if context_candidates else ""
+
+    # 3. 프롬프트 템플릿 및 체인 동적 생성
+    dynamic_prompt = make_prompt(user_question, retrieved_context)
+    prompt = build_prompt(dynamic_prompt)
+    chain = LLMChain(llm=llm, prompt=prompt, memory=memory, verbose=False)
+
+    # 4. 멀티턴 대화 기록 및 응답
+    session.append("user", user_question)
+    answer = chain.predict(input=user_question)
+    session.append("assistant", answer)
+
+    # 5. 출력 포맷(정규식, 1~5번 항목만 추출: "1."으로 시작하는 경우만)
     matches = re.findall(
         r"1\..*?\n2\..*?\n3\..*?\n4\..*?\n5\..*(?=\n|$)", answer, flags=re.DOTALL
     )
-    answer_only = matches[-1].strip() if matches else answer
+    answer_only = matches[-1].strip() if matches else answer.strip()
 
     print("\n[AX-4.0 답변]\n" + answer_only)
