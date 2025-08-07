@@ -42,15 +42,15 @@ LangChain 프레임워크를 기반으로 멀티턴(multi-turn) 대화를 지원
   - **벡터 데이터베이스**: FAISS (Facebook AI Similarity Search)
   - **LLM**: ChatOpenAI Wrapper (SKT AX4 모델 연동)
 
-\<p align="left"\>
-\<img src="[https://img.shields.io/badge/Python-3.10-blue?logo=python\&logoColor=white](https://img.shields.io/badge/Python-3.10-blue?logo=python&logoColor=white)" alt="Python"\>
-\<img src="[https://img.shields.io/badge/LangChain-v0.1.0-purple?logo=chainlink\&logoColor=white](https://img.shields.io/badge/LangChain-v0.1.0-purple?logo=chainlink&logoColor=white)" alt="LangChain"\>
-\<img src="[https://img.shields.io/badge/FAISS-yellowgreen?logo=facebook\&logoColor=white](https://img.shields.io/badge/FAISS-yellowgreen?logo=facebook&logoColor=white)" alt="FAISS"\>
-\<img src="[https://img.shields.io/badge/SBERT-KO--SBERT-lightblue?logo=semanticweb\&logoColor=black](https://img.shields.io/badge/SBERT-KO--SBERT-lightblue?logo=semanticweb&logoColor=black)" alt="SBERT"\>
-\</p\>
+
+![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python&logoColor=white)
+![LangChain](https://img.shields.io/badge/LangChain-v0.1.0-purple?logo=chainlink&logoColor=white)
+![FAISS](https://img.shields.io/badge/FAISS-yellowgreen?logo=facebook&logoColor=white)
+![SBERT](https://img.shields.io/badge/SBERT-KO--SBERT-lightblue?logo=semanticweb&logoColor=black)
+
 
 ### 4.2 아키텍처
-\![](/rag_model.png)
+![아키텍처 구조도](/rag_model.png) 
 
 본 프로젝트는 위 구조도를 기반으로 작동합니다. 사용자의 질문은 LangChain 메모리를 거쳐 RAG 쿼리로 구성되며, FAISS 벡터 DB에서 관련 문서를 검색합니다. 검색된 컨텍스트는 LLM 프롬프트에 주입되어 최종 답변을 생성하고 사용자에게 반환됩니다. 질문이 의료 관련이 아닌 경우, RAG 단계를 건너뛰고 LLM이 직접 응답합니다.
 
