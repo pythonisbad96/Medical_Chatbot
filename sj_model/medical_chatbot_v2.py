@@ -233,17 +233,28 @@ while True:
             break
     retrieved_context = "\n---\n".join(context_candidates) if context_candidates else ""
 
-    # 3. 프롬프트 템플릿 및 체인 동적 생성
+    # 3. 대화 기록 및 최근 N턴만 유지
+    session.append("user", user_question)
+    session.history = session.history[-4:]  # 최근 4개(2쌍)만 유지
+
+    # 4. memory를 매번 새로 생성 (최근 history만 반영)
+    memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+    for h in session.history:
+        if h["role"] == "user":
+            memory.chat_memory.add_user_message(h["message"])
+        else:
+            memory.chat_memory.add_ai_message(h["message"])
+
+    # 5. 프롬프트 템플릿 및 체인 동적 생성
     dynamic_prompt = make_prompt(user_question, retrieved_context)
     prompt = build_prompt(dynamic_prompt)
     chain = LLMChain(llm=llm, prompt=prompt, memory=memory, verbose=False)
 
-    # 4. 멀티턴 대화 기록 및 응답
-    session.append("user", user_question)
+    # 6. 응답 생성 및 assistant 기록
     answer = chain.predict(input=user_question)
     session.append("assistant", answer)
 
-    # 5. 출력 포맷(정규식, 1~5번 항목만 추출: "1."으로 시작하는 경우만)
+    # 7. 출력 포맷(정규식, 1~5번 항목만 추출: "1."으로 시작하는 경우만)
     matches = re.findall(
         r"1\..*?\n2\..*?\n3\..*?\n4\..*?\n5\..*(?=\n|$)", answer, flags=re.DOTALL
     )
