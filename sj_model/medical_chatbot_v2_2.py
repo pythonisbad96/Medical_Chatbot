@@ -8,6 +8,7 @@ from langchain_community.vectorstores import FAISS
 
 from langchain.memory import ConversationBufferMemory
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+
 # from langchain_community.chat_models import ChatOpenAI   # 사용 안 함(속도 개선용)
 # from langchain.chains import LLMChain                    # 사용 안 함(속도 개선용)
 
@@ -19,22 +20,23 @@ import json
 
 # 0. 환경변수에서 API 설정 (없으면 기본값)
 OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "https://guest-api.sktax.chat/v1")
-OPENAI_API_KEY  = os.getenv("OPENAI_API_KEY",  "sktax-XyeKFrq67ZjS4EpsDlrHHXV8it")
-MODEL_NAME      = os.getenv("MODEL_NAME",      "ax4")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "sktax-XyeKFrq67ZjS4EpsDlrHHXV8it")
+MODEL_NAME = os.getenv("MODEL_NAME", "ax4")
 
 # 1. 데이터 폴더/경로 지정
 data = "./dataset"
 
 # 2. 데이터 불러오기
 df_1200 = pd.read_csv(os.path.join(data, "1200_v1.csv"))
-df_amc   = pd.read_csv(os.path.join(data, "amc.csv"))
+df_amc = pd.read_csv(os.path.join(data, "amc.csv"))
 df_daily = pd.read_csv(os.path.join(data, "daily_dataset.csv"))
 df_final = pd.read_csv(os.path.join(data, "final_v7.csv"))
-df_kdca  = pd.read_csv(os.path.join(data, "kdca.csv"))
-df_snu   = pd.read_csv(os.path.join(data, "snu.csv"))
+df_kdca = pd.read_csv(os.path.join(data, "kdca.csv"))
+df_snu = pd.read_csv(os.path.join(data, "snu.csv"))
 
 # 3. 임베딩 모델 준비 (최초 1회)
 embedding_model = HuggingFaceEmbeddings(model_name="jhgan/ko-sbert-sts")
+
 
 # 4. 단어 단위 chunking 함수
 def chunk_by_words(texts, chunk_size=60):
@@ -49,6 +51,7 @@ def chunk_by_words(texts, chunk_size=60):
                 chunks.append(chunk)
     return chunks
 
+
 # 5. 각 파일별 chunk + 벡터DB 저장 (최초 1회)
 def prepare_faiss():
     os.makedirs("vector_db", exist_ok=True)
@@ -60,11 +63,16 @@ def prepare_faiss():
     # amc
     amc_texts = (
         df_amc["병명"].astype(str)
-        + "\n" + df_amc["정의"].astype(str)
-        + "\n" + df_amc["원인"].astype(str)
-        + "\n" + df_amc["증상"].astype(str)
-        + "\n" + df_amc["진단"].astype(str)
-        + "\n" + df_amc["치료"].astype(str)
+        + "\n"
+        + df_amc["정의"].astype(str)
+        + "\n"
+        + df_amc["원인"].astype(str)
+        + "\n"
+        + df_amc["증상"].astype(str)
+        + "\n"
+        + df_amc["진단"].astype(str)
+        + "\n"
+        + df_amc["치료"].astype(str)
     )
     chunks_amc = chunk_by_words(amc_texts.tolist(), chunk_size=60)
     db_amc = FAISS.from_texts(chunks_amc, embedding=embedding_model)
@@ -82,11 +90,16 @@ def prepare_faiss():
     # kdca
     kdca_texts = (
         df_kdca["병명"].astype(str)
-        + "\n" + df_kdca["정의"].astype(str)
-        + "\n" + df_kdca["원인"].astype(str)
-        + "\n" + df_kdca["증상"].astype(str)
-        + "\n" + df_kdca["진단"].astype(str)
-        + "\n" + df_kdca["치료"].astype(str)
+        + "\n"
+        + df_kdca["정의"].astype(str)
+        + "\n"
+        + df_kdca["원인"].astype(str)
+        + "\n"
+        + df_kdca["증상"].astype(str)
+        + "\n"
+        + df_kdca["진단"].astype(str)
+        + "\n"
+        + df_kdca["치료"].astype(str)
     )
     chunks_kdca = chunk_by_words(kdca_texts.tolist(), chunk_size=60)
     db_kdca = FAISS.from_texts(chunks_kdca, embedding=embedding_model)
@@ -94,15 +107,21 @@ def prepare_faiss():
     # snu
     snu_texts = (
         df_snu["병명"].astype(str)
-        + "\n" + df_snu["정의"].astype(str)
-        + "\n" + df_snu["원인"].astype(str)
-        + "\n" + df_snu["증상"].astype(str)
-        + "\n" + df_snu["진단/검사"].astype(str)
-        + "\n" + df_snu["치료"].astype(str)
+        + "\n"
+        + df_snu["정의"].astype(str)
+        + "\n"
+        + df_snu["원인"].astype(str)
+        + "\n"
+        + df_snu["증상"].astype(str)
+        + "\n"
+        + df_snu["진단/검사"].astype(str)
+        + "\n"
+        + df_snu["치료"].astype(str)
     )
     chunks_snu = chunk_by_words(snu_texts.tolist(), chunk_size=60)
     db_snu = FAISS.from_texts(chunks_snu, embedding=embedding_model)
     db_snu.save_local("vector_db/faiss_db_snu")
+
 
 # 최초 1회만 실행 (이미 저장돼 있으면 생략)
 if not os.path.exists("vector_db/faiss_db_1200_v1/index.faiss"):
@@ -122,6 +141,7 @@ db_list = [
     for db_path in db_paths
 ]
 
+
 # 7. 대화 세션/상태 관리
 class ChatSession:
     def __init__(self, session_id=None):
@@ -138,8 +158,10 @@ class ChatSession:
     def append(self, user, message):
         self.history.append({"role": user, "message": message})
 
+
 # 8. LangChain 메모리(틀 유지용) + 프롬프트 생성 함수
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+
 
 def make_prompt(user_question, retrieved_context):
     return f"""
@@ -158,8 +180,10 @@ def make_prompt(user_question, retrieved_context):
 ---
 출력 형식:
 (의료 질문일 경우)
-1. 예상되는 병명 (2~3가지):  
-   - 첫 번째 병명은 간단한 설명도 포함해주세요.
+1. 예상되는 병명 (반드시 2~3가지, 각 병명마다 한 줄 설명 포함):  
+   - 첫 번째 병명: (간단한 설명)
+   - 두 번째 병명: (간단한 설명)
+   - 세 번째 병명: (간단한 설명, 선택적으로 포함)
 2. 주요 원인:
 3. 추천 진료과 (2~3과):
 4. 예방 및 관리 방법:
@@ -168,6 +192,7 @@ def make_prompt(user_question, retrieved_context):
 (비의료 질문일 경우)
 답변:
 """.strip()
+
 
 # 프롬프트 템플릿 빌더 — 실제 호출은 OpenAI SDK로
 def build_prompt(dynamic_prompt):
@@ -178,6 +203,7 @@ def build_prompt(dynamic_prompt):
             ("user", "{input}"),
         ]
     )
+
 
 # 9. OpenAI SDK 클라이언트(팀원 방식)
 client = OpenAI(base_url=OPENAI_BASE_URL, api_key=OPENAI_API_KEY)
@@ -195,7 +221,9 @@ while True:
 
     # 1) 멀티턴 기반 RAG 쿼리 (최근 유저 2턴 + 현재 질문)
     prev_utts = [h["message"] for h in session.history if h["role"] == "user"]
-    rag_query = " ".join(prev_utts[-2:] + [user_question]) if prev_utts else user_question
+    rag_query = (
+        " ".join(prev_utts[-2:] + [user_question]) if prev_utts else user_question
+    )
 
     # 2) RAG 컨텍스트 (매 턴 재검색) + 필터링
     top_k_per_db = 3
@@ -217,7 +245,9 @@ while True:
         if len(context_candidates) == 3:
             break
 
-    retrieved_context = "\n---\n".join(context_candidates)[:1100] if context_candidates else ""
+    retrieved_context = (
+        "\n---\n".join(context_candidates)[:1100] if context_candidates else ""
+    )
 
     # 3) 세션 히스토리 누적 & 최근 N턴만 유지(틀 유지)
     session.append("user", user_question)
@@ -270,4 +300,3 @@ while True:
 
     # 8) assistant 기록 & 출력
     session.append("assistant", answer_only)
-    print("\n[정리]\n" + answer_only)
