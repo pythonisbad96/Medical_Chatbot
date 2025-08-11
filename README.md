@@ -41,6 +41,8 @@ LangChain 프레임워크를 기반으로 멀티턴(multi-turn) 대화를 지원
   - **임베딩 모델**: `jhgan/ko-sbert-sts` (HuggingFace Embeddings)
   - **벡터 데이터베이스**: FAISS (Facebook AI Similarity Search)
   - **LLM**: ChatOpenAI Wrapper (SKT AX4 모델 연동)
+  - **프론트엔드**: sts, java script
+  - **백엔드**: MySQL, Python 3.10
 
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python&logoColor=white)
