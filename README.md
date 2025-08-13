@@ -41,14 +41,18 @@ LangChain 프레임워크를 기반으로 멀티턴(multi-turn) 대화를 지원
   - **임베딩 모델**: `jhgan/ko-sbert-sts` (HuggingFace Embeddings)
   - **벡터 데이터베이스**: FAISS (Facebook AI Similarity Search)
   - **LLM**: ChatOpenAI Wrapper (SKT AX4 모델 연동)
-  - **프론트엔드**: sts, java script
-  - **백엔드**: MySQL, Python 3.10
+  - **프론트엔드**: HTML, CSS, JavaScript
+  - **백엔드**: Spring Boot
+  - **DBMS**: MySQL
 
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python&logoColor=white)
 ![LangChain](https://img.shields.io/badge/LangChain-v0.1.0-purple?logo=chainlink&logoColor=white)
 ![FAISS](https://img.shields.io/badge/FAISS-yellowgreen?logo=facebook&logoColor=white)
 ![SBERT](https://img.shields.io/badge/SBERT-KO--SBERT-lightblue?logo=semanticweb&logoColor=black)
+[![Java](https://img.shields.io/badge/Java-17-orange?logo=java)](https://www.oracle.com/java/)  
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.1.4-brightgreen?logo=springboot)](https://spring.io/projects/spring-boot)  
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-blue?logo=mysql)](https://www.mysql.com/)  
 
 
 ### 4.2 아키텍처
