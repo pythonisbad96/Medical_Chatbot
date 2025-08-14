@@ -1,16 +1,16 @@
 import os
+import ast
+import re
+import uuid
+import json
 import pandas as pd
+
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 
 from langchain.memory import ConversationBufferMemory
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-
 from openai import OpenAI
 
-import re
-import uuid
-import json
 
 # 환경변수에서 API 정보 설정(없으면 기본값 사용)
 OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "https://guest-api.sktax.chat/v1")
@@ -20,6 +20,7 @@ MODEL_NAME = os.getenv("MODEL_NAME", "ax4")
 # 데이터 폴더/경로
 data = "./dataset"
 
+# 1. CSV 로드
 # 의료 데이터 여러 파일 불러오기
 df_1200 = pd.read_csv(os.path.join(data, "1200_v1.csv"))
 df_amc = pd.read_csv(os.path.join(data, "amc.csv"))
@@ -27,6 +28,7 @@ df_daily = pd.read_csv(os.path.join(data, "daily_dataset.csv"))
 df_final = pd.read_csv(os.path.join(data, "final_v7.csv"))
 df_kdca = pd.read_csv(os.path.join(data, "kdca.csv"))
 df_snu = pd.read_csv(os.path.join(data, "snu.csv"))
+df_mfds = pd.read_csv(os.path.join(data, "mfds_crawled_utf8.csv"))
 
 # 임베딩 모델 준비(최초 1회)
 embedding_model = HuggingFaceEmbeddings(model_name="jhgan/ko-sbert-sts")
@@ -46,16 +48,32 @@ def chunk_by_words(texts, chunk_size=60):
     return chunks
 
 
+# 2. 리스트 컬럼 안전 파싱 유틸
+def _safe_list(x):
+    if pd.isnull(x):
+        return []
+    s = str(x).strip()
+    if s.startswith("[") and s.endswith("]"):
+        try:
+            v = ast.literal_eval(s)
+            return [str(t).strip() for t in v if str(t).strip()]
+        except Exception:
+            pass
+    # 콤마/슬래시/세미콜론/파이프 등 구분 기호 처리
+    return [p.strip() for p in re.split(r"[,\|/;]", s) if p.strip()]
+
+
 # 각 데이터셋을 FAISS 벡터DB로 저장(최초 1회)
 def prepare_faiss():
     os.makedirs("vector_db", exist_ok=True)
-    # -- 1200_v1
+
+    # 1200_v1
     texts_1200 = df_1200["label"].astype(str) + "\n" + df_1200["text"].astype(str)
     chunks_1200 = chunk_by_words(texts_1200.tolist(), chunk_size=60)
     db_1200 = FAISS.from_texts(chunks_1200, embedding=embedding_model)
     db_1200.save_local("vector_db/faiss_db_1200_v1")
 
-    # -- amc
+    # amc
     amc_texts = (
         df_amc["병명"].astype(str)
         + "\n"
@@ -73,19 +91,19 @@ def prepare_faiss():
     db_amc = FAISS.from_texts(chunks_amc, embedding=embedding_model)
     db_amc.save_local("vector_db/faiss_db_amc")
 
-    # -- daily
+    # daily
     daily_texts = df_daily["증상"].astype(str) + "\n" + df_daily["일상말"].astype(str)
     chunks_daily = chunk_by_words(daily_texts.tolist(), chunk_size=60)
     db_daily = FAISS.from_texts(chunks_daily, embedding=embedding_model)
     db_daily.save_local("vector_db/faiss_db_daily_dataset")
 
-    # -- final_v7
+    # final_v7
     final_texts = df_final["label"].astype(str) + "\n" + df_final["text"].astype(str)
     chunks_final = chunk_by_words(final_texts.tolist(), chunk_size=60)
     db_final = FAISS.from_texts(chunks_final, embedding=embedding_model)
     db_final.save_local("vector_db/faiss_db_final_v7")
 
-    # -- kdca
+    # kdca
     kdca_texts = (
         df_kdca["병명"].astype(str)
         + "\n"
@@ -103,7 +121,7 @@ def prepare_faiss():
     db_kdca = FAISS.from_texts(chunks_kdca, embedding=embedding_model)
     db_kdca.save_local("vector_db/faiss_db_kdca")
 
-    # -- snu
+    # snu
     snu_texts = (
         df_snu["병명"].astype(str)
         + "\n"
@@ -121,9 +139,48 @@ def prepare_faiss():
     db_snu = FAISS.from_texts(chunks_snu, embedding=embedding_model)
     db_snu.save_local("vector_db/faiss_db_snu")
 
+    # 3. mfds (식약처 의약품/의약외품)
+    mfds_ok = df_mfds.copy()
+    if "status" in mfds_ok.columns:
+        mfds_ok = mfds_ok[mfds_ok["status"].astype(str).str.lower().eq("ok")]
 
-# 최초 1회만 실행
-if not os.path.exists("vector_db/faiss_db_1200_v1/index.faiss"):
+    prod = mfds_ok.get("제품명", "").astype(str)
+    link = mfds_ok.get("상세링크", "").astype(str)
+    ing_k = mfds_ok.get("성분목록", "")
+    ing_e = mfds_ok.get("성분영문목록", "")
+    eff = mfds_ok.get("효능효과", "").astype(str)
+    dose = mfds_ok.get("용법용량", "").astype(str)
+
+    mfds_texts = []
+    for i in range(len(mfds_ok)):
+        k_list = _safe_list(ing_k.iloc[i] if len(mfds_ok) > 0 else "")
+        e_list = _safe_list(ing_e.iloc[i] if len(mfds_ok) > 0 else "")
+        text = (
+            f"제품명: {prod.iloc[i]}\n"
+            f"성분(국문): {', '.join(k_list) if k_list else ''}\n"
+            f"성분(영문): {', '.join(e_list) if e_list else ''}\n"
+            f"효능효과: {eff.iloc[i]}\n"
+            f"용법용량: {dose.iloc[i]}\n"
+            f"출처: {link.iloc[i]}"
+        )
+        mfds_texts.append(text)
+
+    chunks_mfds = chunk_by_words(mfds_texts, chunk_size=60)
+    db_mfds = FAISS.from_texts(chunks_mfds, embedding=embedding_model)
+    db_mfds.save_local("vector_db/faiss_db_mfds")
+
+
+# 최초 1회만 실행 (필수 인덱스 존재 확인)
+required_indexes = [
+    "vector_db/faiss_db_1200_v1/index.faiss",
+    "vector_db/faiss_db_amc/index.faiss",
+    "vector_db/faiss_db_daily_dataset/index.faiss",
+    "vector_db/faiss_db_final_v7/index.faiss",
+    "vector_db/faiss_db_kdca/index.faiss",
+    "vector_db/faiss_db_snu/index.faiss",
+    "vector_db/faiss_db_mfds/index.faiss",
+]
+if not all(os.path.exists(p) for p in required_indexes):
     prepare_faiss()
 
 # 벡터DB 경로 리스트 및 로드
@@ -134,6 +191,7 @@ db_paths = [
     "vector_db/faiss_db_final_v7",
     "vector_db/faiss_db_kdca",
     "vector_db/faiss_db_snu",
+    "vector_db/faiss_db_mfds",
 ]
 db_list = [
     FAISS.load_local(db_path, embedding_model, allow_dangerous_deserialization=True)
@@ -272,11 +330,18 @@ while True:
         " ".join(prev_utts[-2:] + [user_question]) if prev_utts else user_question
     )
 
-    # 각 DB에서 top-3 유사 문서 검색
-    top_k_per_db = 3
+    # 각 DB에서 유사 문서 검색
+    top_k_per_db_default = 3
     all_docs = []
-    for db in db_list:
-        all_docs.extend(db.similarity_search_with_score(rag_query, k=top_k_per_db))
+    for path, db in zip(db_paths, db_list):
+        # (5) MFDS 가중치/개수 조정
+        k = 5 if path.endswith("faiss_db_mfds") else top_k_per_db_default
+        results = db.similarity_search_with_score(rag_query, k=k)
+        if path.endswith("faiss_db_mfds"):
+            # MFDS 검색 결과에 소폭 가산점(점수 감액) 적용
+            results = [(d, s - 0.05) for (d, s) in results]
+        all_docs.extend(results)
+
     all_docs_sorted = sorted(all_docs, key=lambda x: x[1])
     seen = set()
     context_candidates = []
@@ -313,7 +378,7 @@ while True:
     messages = []
     messages.append({"role": "system", "content": dynamic_prompt})
     for m in memory.chat_memory.messages:
-        role = "user" if m.type == "human" else "assistant"
+        role = "user" if getattr(m, "type", "") == "human" else "assistant"
         messages.append({"role": role, "content": m.content})
     messages.append({"role": "user", "content": user_question})
 
