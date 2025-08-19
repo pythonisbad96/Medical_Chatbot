@@ -1,0 +1,54 @@
+{
+    "병명": "위장염",
+    "증상": {
+        "Amc": null,
+        "Snu": null,
+        "Kdca": null,
+        "Final": [
+            "구토, 눈이 움푹 들어감, 탈수, 설사",
+            "구토, 눈이 움푹 들어감, 설사",
+            "구토, 탈수, 설사",
+            "구토, 눈이 움푹 들어감, 탈수증상",
+            "눈이 움푹 들어감, 탈수, 설사"
+        ],
+        "1200": null
+    },
+    "정의": {
+        "Amc": null,
+        "Snu": null,
+        "Kdca": null,
+        "Final": null,
+        "1200": null
+    },
+    "원인": {
+        "Amc": null,
+        "Snu": null,
+        "Kdca": null,
+        "Final": null,
+        "1200": null
+    },
+    "진단": {
+        "Amc": null,
+        "Snu": null,
+        "Kdca": null,
+        "Final": null,
+        "1200": null
+    },
+    "치료": {
+        "Amc": null,
+        "Snu": null,
+        "Kdca": null,
+        "Final": null,
+        "1200": null
+    },
+    "진료과": {
+        "Amc": null,
+        "Snu": null,
+        "Kdca": null,
+        "Final": null,
+        "1200": null
+    },
+    "관련_증상_표현": [
+        "배가 요동치고 꾸루룩대면서 설사까지 하니까 아무것도 못먹겠어. 이거 진짜 큰일인 거야?"
+    ]
+}

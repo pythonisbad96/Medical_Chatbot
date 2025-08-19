@@ -1,0 +1,28 @@
+# 벡터 검색
+faiss-cpu==1.7.4
+langchain==0.2.14
+langchain-community==0.2.12
+langchain-huggingface==0.0.3
+
+# 임베딩 모델
+sentence-transformers==2.7.0
+transformers==4.44.2
+huggingface-hub==0.24.6
+
+# LLM API
+openai==1.44.0
+
+# 데이터 처리
+pandas==2.2.2
+numpy==1.26.4
+
+# 문자열 유사도
+rapidfuzz==3.9.4
+
+# 웹/시각화 (필요할 경우만)
+matplotlib==3.9.2
+seaborn==0.13.2
+
+# 기타
+tqdm==4.66.5
+python-dotenv==1.0.1
