@@ -115,7 +115,7 @@ def load_mfds_dataset(csv_path):
             texts.append(merged)
     return texts
 
-# 3. 임베딩 / 청크 / 인덱싱 (단일 DB)
+# 3. 임베딩 / 청크 / 인덱싱 (벡터 DB 2개)
 embedding_model = HuggingFaceEmbeddings(model_name="jhgan/ko-sbert-sts")
 
 def chunk_by_words(texts, chunk_size=60):
@@ -135,29 +135,28 @@ def build_and_save_faiss(texts, save_path, chunk_size=60):
     if not chunks:
         return
     db = FAISS.from_texts(chunks, embedding=embedding_model)
-    os.makedirs(os.path.dirname(save_path), exist_ok=True
-    )
+    os.makedirs(os.path.dirname(save_path), exist_ok=True)
     db.save_local(save_path)
 
-def prepare_faiss_single():
+def prepare_faiss_dual():
     """
-    질병 JSON + 의약품 CSV → 하나의 단일 인덱스: vector_db/faiss_db_medical_all
+    질병 JSON → vector_db/faiss_db_json
+    의약품 CSV → vector_db/faiss_db_mfds
     """
-    index_path = "vector_db/faiss_db_medical_all/index.faiss"
-    if os.path.exists(index_path):
-        return
-    texts_json = load_json_dataset(json_dir)
-    texts_mfds = load_mfds_dataset(mfds_path)
-    all_texts = (texts_json or []) + (texts_mfds or [])
-    build_and_save_faiss(all_texts, "vector_db/faiss_db_medical_all", chunk_size=60)
+    if not os.path.exists("vector_db/faiss_db_json/index.faiss"):
+        texts_json = load_json_dataset(json_dir)
+        build_and_save_faiss(texts_json, "vector_db/faiss_db_json", chunk_size=60)
+    if not os.path.exists("vector_db/faiss_db_mfds/index.faiss"):
+        texts_mfds = load_mfds_dataset(mfds_path)
+        build_and_save_faiss(texts_mfds, "vector_db/faiss_db_mfds", chunk_size=60)
 
-# 최초 1회 인덱스 생성
-prepare_faiss_single()
+# 최초 1회 인덱스 생성(2개 DB: 질병/의약품)
+prepare_faiss_dual()
 
+# 4. 벡터 DB 로드 (2개로 분리)
+db_json = FAISS.load_local("vector_db/faiss_db_json", embedding_model, allow_dangerous_deserialization=True)
+db_mfds = FAISS.load_local("vector_db/faiss_db_mfds", embedding_model, allow_dangerous_deserialization=True)
 
-# 4. 벡터 DB 로드 (하나만)
-db_path = "vector_db/faiss_db_medical_all"
-db = FAISS.load_local(db_path, embedding_model, allow_dangerous_deserialization=True)
 
 # 5. 세션/프롬프트/후처리
 class ChatSession:
@@ -254,12 +253,15 @@ while True:
         session.save()
         break
 
+    # 7. 대화 루프 내 → 기존 db.similarity_search_with_score() 부분만 수정
     # 최근 2턴의 사용자 질문까지 합쳐 RAG 쿼리 생성
     prev_utts = [h["message"] for h in session.history if h["role"] == "user"]
     rag_query = (" ".join(prev_utts[-2:] + [user_question]) if prev_utts else user_question)
 
-    # 단일 DB에서 top-N 검색
-    docs_with_scores = db.similarity_search_with_score(rag_query, k=SEARCH_K)
+    # 두 개의 DB에서 각각 검색 후 통합
+    docs_json = db_json.similarity_search_with_score(rag_query, k=SEARCH_K)
+    docs_mfds = db_mfds.similarity_search_with_score(rag_query, k=SEARCH_K)
+    docs_with_scores = docs_json + docs_mfds
 
     # 점수 기준 정렬: FAISS는 일반적으로 "낮을수록 유사(거리)" → 오름차순 정렬
     docs_with_scores = sorted(docs_with_scores, key=lambda x: x[1])
