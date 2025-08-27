@@ -1,8 +1,8 @@
 package com.medbot.controller;
 
-import com.medbot.domain.Patient;
-import com.medbot.domain.DiagnosisHistory;
 import com.medbot.repository.PatientRepository;
+import com.medbot.domain.DiagnosisHistory;
+import com.medbot.domain.Patient;
 import com.medbot.repository.DiagnosisHistoryRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;

@@ -1,7 +1,8 @@
 package com.medbot.repository;
 
-import com.medbot.domain.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.medbot.domain.Patient;
 
 public interface PatientRepository extends JpaRepository<Patient, String> {
 }

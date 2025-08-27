@@ -1,10 +1,11 @@
 package com.medbot.repository;
 
-import com.medbot.domain.DiagnosisHistory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.medbot.domain.DiagnosisHistory;
 
 import java.util.List;
 

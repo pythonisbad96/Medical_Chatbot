@@ -1,0 +1,11 @@
+version: "3"
+agent:
+  authtoken: 31fuwDwY34QIhT6tje94iJRG1W5_7MBiKJdi6wLbSh1UEjRHt
+  
+tunnels:
+  springboot:
+    addr: 8080
+    proto: http
+  flask:
+    addr: 5050
+    proto: http

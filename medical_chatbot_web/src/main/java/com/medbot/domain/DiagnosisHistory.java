@@ -32,6 +32,9 @@ public class DiagnosisHistory {
 	@Column(name = "additional_info", columnDefinition = "TEXT")
 	private String additionalInfo;
 
+	@Column(name = "medicine", columnDefinition = "TEXT")
+	private String medicine;
+	
 	@Column(name = "chat_date")
 	private LocalDateTime chatDate;
 
@@ -107,6 +110,14 @@ public class DiagnosisHistory {
 		this.additionalInfo = additionalInfo;
 	}
 
+	public String getMedicine() {
+	    return medicine;
+	}
+
+	public void setMedicine(String medicine) {
+	    this.medicine = medicine;
+	}
+	
 	public LocalDateTime getChatDate() {
 		return chatDate;
 	}
