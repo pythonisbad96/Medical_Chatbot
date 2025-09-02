@@ -38,9 +38,9 @@ LangChain 프레임워크를 기반으로 멀티턴(multi-turn) 대화를 지원
 
   - **개발 언어**: Python 3.10+
   - **프레임워크**: LangChain
-  - **임베딩 모델**: `jhgan/ko-sbert-sts` (HuggingFace Embeddings)
+  - **임베딩 모델**: `jhgan/ko-sroberta-multitask` (HuggingFace Embeddings)
   - **벡터 데이터베이스**: FAISS (Facebook AI Similarity Search)
-  - **LLM**: ChatOpenAI Wrapper (SKT AX4 모델 연동)
+  - **LLM**: Exaone-4.0-32B (FriendliAI 서버리스 엔드포인트)
   - **프론트엔드**: HTML, CSS, JavaScript
   - **백엔드**: Spring Boot
   - **DBMS**: MySQL
